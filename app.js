@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
-// challange
+
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var multer = require('multer');
