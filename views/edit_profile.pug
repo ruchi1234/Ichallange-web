@@ -1,0 +1,115 @@
+extends header_user
+block content
+  .container
+    if(messages !=null)
+      .alert.alert-warning#failure-alert #{messages}
+    .row
+      .col-sm-offset-3.col-sm-6.col-sm-onset-3
+        .signin_form
+          form(action='/profile', name='edit_profile' method="post")
+            h1  Edit Profile 
+            .login_form
+              .col-sm-12
+                input(type="hidden" name="user_id" id="edit_user_id",value=test._id)
+                input(type="hidden" name="checkname" id="edit_checkname",value=test.username)
+                input(type="hidden" name="checkemail" id="edit_checkemail",value=test.email)
+                div
+                  input(type="text" name="username" id ="edit_username" placeholder="Username" , value=test.username)
+                  span#edit_p1
+              if (test.is_social == 0)
+                .col-sm-12
+                  div
+                    input(type="text" name="email" id ="edit_email" placeholder="Email", value=test.email)
+                    span#edit_p2
+              .col-sm-12
+                div
+                  select.select(name="country", id='edit_country')
+                    //- option(selected enabled value=test.country) #{test.country}
+                    if (typeof(test.country) === 'undefined')
+                      option(value='' selected enabled ) Select
+                    if (test.country === "US")
+                      option(value='US' selected enabled ) United States
+                    else
+                       option(value='US' ) United States
+                    if (test.country === "AF")
+                       option(value='AF' selected enabled ) Afghanistan
+                    else
+                       option(value='AF') Afghanistan
+                    if (test.country === "AX")
+                      option(value='AX' selected enabled ) Åland Islands
+                    else
+                      option(value='AX') Åland Islands
+                    if (test.country === "AL")
+                      option(value='AL' selected enabled ) Albania
+                    else
+                      option(value='AL') Albania
+                    if (test.country === "DZ")
+                      option(value='DZ' selected enabled ) Algeria
+                    else
+                      option(value='DZ') Algeria
+                    if (test.country === "AS")
+                      option(value='AS' selected enabled ) American Samoa
+                    else
+                      option(value='AS') American Samoa
+                  span#edit_p4
+              .col-sm-12
+                div
+                  select.select(name="state", id='edit_state')
+                    //-option(selected enabled value=test.state) #{test.state}
+                    if (test.state === "US")
+                      option(value='US' selected enabled ) United States
+                    else
+                       option(value='US' ) United States
+                    if (test.state === "AF")
+                       option(value='AF' selected enabled ) Afghanistan
+                    else
+                       option(value='AF') Afghanistan
+                    if (test.state === "AX")
+                      option(value='AX' selected enabled ) Åland Islands
+                    else
+                      option(value='AX') Åland Islands
+                    if (test.state === "AL")
+                      option(value='AL' selected enabled ) Albania
+                    else
+                      option(value='AL') Albania
+                    if (test.state === "DZ")
+                      option(value='DZ' selected enabled ) Algeria
+                    else
+                      option(value='DZ') Algeria
+                    if (test.state === "AS")
+                      option(value='AS' selected enabled ) American Samoa
+                    else
+                      option(value='AS') American Samoa
+                  span#edit_p5
+              .col-sm-12
+                div
+                  label Date of Birth
+                .col-sm-6
+                  select.select#edit_month(name='month')
+                    //-option(selected enabled value=test.month) #{test.month}
+                    each val, indexmonth in {1:'January',2:'February',3:'March',4:'April',5:'May',6:'June',7:'July',8:'August',9:'September',10:'October',11:'November',12:'December'}
+                     option(value= indexmonth, selected= indexmonth == test.month) #{val}
+                  span#edit_p6
+                .col-sm-3
+                  select.select#edit_date(name="date")
+                    //-option(selected enabled value=test.date) #{test.date}
+                    - var n = 1;
+                    while n < 32
+                      option(value=n, selected= n == test.date) #{n++}
+                span#edit_p7
+                .col-sm-3
+                  - var d = new Date();
+                  - var year= d.getFullYear();
+                  select.select#edit_year(name="year")
+                    - var n = 1960;
+                    while n < year
+                      option(value=n, selected= n == test.year) #{n++}
+                span#edit_p8
+              .col-sm-12
+                span#alert
+              .col-sm-12.login_submit
+                div
+                  //- a(href="/profile") 
+                  button#update_profile Update Profile
+                    //- input(type="submit")
+              .clear

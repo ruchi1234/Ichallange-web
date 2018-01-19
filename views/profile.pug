@@ -1,0 +1,169 @@
+extends header_user
+block content
+  .container
+    div
+      img#image(src="images/editiimg.png")
+      button#crop Crop
+    .row.ac_edit_row
+        .col-sm-6
+          .my_ac_h1
+            h1  My Account 
+        .col-sm-6
+          .ac_edit
+            .col-sm-2.col-sm-offset-6
+              a
+                img(src='images/email.png')
+            .col-sm-4
+              .ac_edit_pic
+                a(href = '/edit_profile')
+                  | Edit Profile 
+                  span
+                    img(src='images/editiimg.png')
+            .clear
+            button.btn.btn-primary(type='button', data-target='#cropper-example-2-modal', data-toggle='modal') Launch the demo
+    if(messages !=null)
+      .alert.alert-success#success-alert #{messages}
+    .row
+      .col-sm-8.col-sm-onset-4.user_info
+        .col-sm-3
+          .user_info_pic
+            form(action="/profile_image", enctype="multipart/form-data", method="post")
+              a
+                img.profile_pic(src='images/bio_placeholder.jpg')
+              div.hidden(style='height:0px;overflow:hidden')
+                input.fileImage(type='file', name='profile_image' accept="image/*")
+              div
+                //- a(href='/profile_pic')
+                img.profile_pic_edit(src='images/picedit.png')
+              .hide_button(style='display:none;overflow:hidden')
+                input#button_image(type="submit")
+              
+
+        .col-sm-9
+          .user_info_title
+            p= Username
+            //- p
+            //-   |full name 
+            p#profile_email= Email
+          .user_info_btn
+            input(type='button', name='', value='Contacts', onclick = 'window.location.href="/create_challenge'+ Username +'"')
+            if (is_social == 0)
+              input(type='button', id="button_change_password", value='Change Password', data-toggle="modal" data-target="#myModal")
+      .lobby_table
+        .form_inner
+          #followup_tbl_wrapper.dataTables_wrapper.no-footer
+            table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+              thead.table_heading
+                tr(role="row")
+                th.sorting_disabled.tbl-head.chalange_col Current Challenges
+                th.sorting_disabled.tbl-head.style_col Status
+                th.sorting_disabled.tbl-head.entry_col Rank
+                th.sorting_disabled.tbl-head.deadline_col Points
+              tbody
+                - var d = new Date();
+                - var year= d.getFullYear();
+                - var month = d.getMonth()+1;
+                - month = month < 10 ? '0'+month : month;
+                - var date = d.getDate();
+                - date = date < 10 ? '0'+date : date;
+                - var today = month+'/'+date+'/'+year
+                - var hours = d.getHours();
+                - var minutes = d.getMinutes();
+                - var ampm = hours >= 12 ? 'PM' : 'AM';
+                - hours = hours % 12;
+                - hours = hours ? hours : 12; // the hour '0' should be '12'
+                - minutes = minutes < 10 ? '0'+minutes : minutes;
+                - var strTime = hours + ':' + minutes + '  ' + ampm;
+                for data in test
+                  if(data.Date > today)
+                    if(data.time > strTime)
+                    tr(role="row")
+                      td
+                        .challengename 
+                          a(href='/edit_challenge/'+data._id)= data.challengeName
+                      td= data.entry
+                      td= data.time
+                      td= data.Date
+      .lobby_table
+        .form_inner
+          #followup_tbl_wrapper.dataTables_wrapper.no-footer
+            table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+              thead.table_heading
+                th.sorting_disabled.tbl-head.chalange_col History
+                  th.sorting_disabled.tbl-head.style_col Status
+                  th.sorting_disabled.tbl-head.entry_col Rank
+                  th.sorting_disabled.tbl-head.deadline_col Points
+              tbody
+                - var d = new Date();
+                - var year= d.getFullYear();
+                - var month = d.getMonth()+1;
+                - month = month < 10 ? '0'+month : month;
+                - var date = d.getDate();
+                - date = date < 10 ? '0'+date : date;
+                - var today = month+'/'+date+'/'+year
+                - var hours = d.getHours();
+                - var minutes = d.getMinutes();
+                - var ampm = hours >= 12 ? 'PM' : 'AM';
+                - hours = hours % 12;
+                - hours = hours ? hours : 12; // the hour '0' should be '12'
+                - minutes = minutes < 10 ? '0'+minutes : minutes;
+                - var strTime = hours + ':' + minutes + '  ' + ampm;
+                for data in test
+                  if(data.Date < today)
+                    if(data.time < strTime)
+                      tr(role="row")
+                        td= data.challengeName
+                        td= data.entry
+                        td= data.time
+                        td= data.Date
+
+  
+
+  #cropper-example-2-modal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+            .modal-content
+              .modal-header
+                button.close(type="button" data-dismiss="modal" aria-label="Close")
+                  span(aria-hidden="true") ×
+                h4
+              .modal-body
+                #cropper-example-2
+                  img(src='images/bio_placeholder.jpg', alt='Picture')  
+                button#crops.btn.btn-primary(type='button') Crop
+
+
+
+  #myModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+            .modal-content
+              .modal-header
+                button.close(type="button" data-dismiss="modal" aria-label="Close")
+                  span(aria-hidden="true") ×
+                h4
+              .modal-body
+                .container
+                  .row
+                    .col-sm-7.col-sm-onset-3
+                      .signin_form
+                        form(action="/change_password", name='change_password_form' method="post")
+                          h1  Change Password
+                          .login_form
+                              .col-sm-12
+                                  div
+                                    input(type="hidden" name="user_name_password" id="user_name_password",value=Username)
+                                    input(type="password" name="email_change_old_password" id="email_change_old_password" placeholder="Old Password")
+                                    span#password1
+                              .col-sm-12
+                                  div
+                                    input(type="password" name="email_change_new_password" id="email_change_new_password" placeholder="New Password")
+                                    span#password2
+                              .col-sm-12
+                                  div
+                                    input(type="password" name="email_change_password" id="email_change_password" placeholder="Confirm Password")
+                                    span#password3
+                              
+                              .col-sm-12.login_submit
+                                  div
+                                    button#change_password Next
+                              .clear
+  //-include ./partials/_messages

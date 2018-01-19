@@ -1,0 +1,359 @@
+extends header_edit_challenge
+block content
+    .container
+        .row
+            .col-sm-12
+                .crt_chall_h1
+                    h1  Create Challenge 
+            .col-sm-12
+                .crt_chall_form
+                    form#submit(action="/create_challenge", enctype="multipart/form-data",  method="post")
+                        .manager_sec
+                            .col-sm-2
+                                label Manager: 
+                            .col-sm-10
+                                div
+                                    p= Username
+                            .clear  
+                        .col-sm-2
+                            label Challenge Name: 
+                        .col-sm-4.col-sm-onset-6
+                            div
+                                input.challenge_name(type='text', name="challenge_name" value=test.challengeName)
+                                span.p1
+                        .clear
+                        .col-sm-2
+                            label Template 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.template(name="template")
+                                    //- option(selected enabled value=test.country) #{test.country}
+                                    if (test.template == "volvo")
+                                        option(value='volvo' selected enabled ) Volvo
+                                    else
+                                        option(value='volvo' ) volvo
+                                    if (test.template == "saab")
+                                        option(value='saab' selected enabled ) Saab
+                                    else
+                                        option(value='saab' ) saab
+                                    if (test.template =="mercedes")
+                                        option(value='mercedes' selected enabled ) Mercedes
+                                    else
+                                        option(value='mercedes' ) mercedes
+                                    if (test.template == "audi")
+                                        option(value='audi' selected enabled ) Audi
+                                    else
+                                        option(value='audi' ) audi
+                                span.p2
+                        .clear
+                        .col-sm-2
+                            label Deadline 
+                        .col-sm-4.col-sm-onset-6.deadline_date_upr
+                            .col-sm-6.dead_calender
+                                .col-xs-2
+                                    p Date
+                                .col-xs-10.deadline_date
+                                    input.date_cc(type='text', name="date_cc" value=test.Date)
+                                    img.id_imgcalendar(src='/images/calender.png', )
+                                    span.p3
+                                .clear
+                            .col-sm-6.dead_time
+                                .col-xs-2
+                                    p Time
+                                .col-xs-10.deadline_date
+                                    input.time(type='text', name='time', placeholder='MM:HH' value=test.time)
+                                    span.p4
+                                .clear
+                        .clear
+                        .col-sm-2
+                            label Category 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.category(name="category")
+                                    //- option(selected enabled value=test.country) #{test.country}
+                                    if (test.category == "contest")
+                                        option(value='contest' selected enabled ) Contest
+                                    else
+                                        option(value='contest' ) Contest
+                                    if (test.category == "sports")
+                                        option(value='sports' selected enabled ) Sports
+                                    else
+                                        option(value='sports' ) Sports
+                                    if (test.category =="awardshow")
+                                        option(value='awardshow' selected enabled ) Award Show
+                                    else
+                                        option(value='awardshow' ) Award Show
+                                    if (test.category == "other")
+                                        option(value='other' selected enabled ) Other
+                                    else
+                                        option(value='other' ) Other
+                                    if (test.category == "tvshow")
+                                        option(value='tvshow' selected enabled ) Tv Show
+                                    else
+                                        option(value='tvshow' ) Tv Show
+                                span.p5
+                        .clear
+                        .col-sm-2
+                            label Series 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.series(name="series")
+                                    if (test.series == "series")
+                                        option(value='series' selected enabled ) Series
+                                    else
+                                        option(value='series' ) Series
+                                    if (test.series == "once")
+                                        option(value='once' selected enabled ) Once
+                                    else
+                                        option(value='once' ) Once
+                                span.p6
+                        .clear
+                        .col-sm-2
+                            label Entry 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.entry(name="entry")
+                                    if (test.entry == "public")
+                                        option(value='public' selected enabled ) Public
+                                    else
+                                        option(value='public' ) Public
+                                    if (test.entry == "private")
+                                        option(value='private' selected enabled ) Private
+                                    else
+                                        option(value='private' ) Private
+                                span.p7
+                        .clear
+                        .col-sm-2
+                            label Invities 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.invites(name="invites")
+                                    if (test.contacts == "contacts")
+                                        option(value='contacts' selected enabled ) Contacts
+                                    else
+                                        option(value='contacts' ) Contacts
+                                span.c8
+                        .clear        
+                        .col-sm-2
+                            label Prize 
+                        .col-sm-10
+                            div
+                                input.textarea(type='textarea', name='prize' value=test.prize)
+                                span.p9
+                        .clear
+                        .chalange_second_step.challenge
+                            - var i=0
+                            - var m= 0
+                            each question_text, index  in test.question
+                                - var j=0
+                                
+                                //- p= JSON.stringify(question_text['quesanswerList'])
+                                //- - var clone_id = '#clone_answer_'
+                                //- p= clone_id
+                                .clone_section_question.cloning_question(id='clone_answer_'+i)
+                                    .col-sm-12.chalange_questions
+                                        .col-sm-2.col-xs-6
+                                            label.question_label #{i+1}. Enter Question 
+                                        .col-sm-2.col-xs-6.col-sm-onset-8
+                                            .custom_select
+                                                select.select.question(name="question[]")
+                                                    if (value= test.question[i].question_mark == "01")
+                                                        option(value='01' selected enabled ) 01
+                                                    else
+                                                        option(value='01' ) 01  
+                                                    if (value= test.question[i].question_mark == "02")
+                                                        option(value='02' selected enabled ) 02
+                                                    else
+                                                        option(value='02' ) 02
+                                                    if (value=test.question[i].question_mark == "03")
+                                                        option(value='03' selected enabled ) 03
+                                                    else
+                                                        option(value='03' ) 03
+                                                    if (value=test.question[i].question_mark == "04")
+                                                        option(value='04' selected enabled ) 04
+                                                    else
+                                                        option(value='04' ) 04
+                                                    if (value=test.question[i].question_mark == "05")
+                                                        option(value='05' selected enabled ) 05
+                                                    else
+                                                        option(value='05' ) 05
+                                                    if (value=test.question[i].question_mark == "06")
+                                                        option(value='06' selected enabled ) 06
+                                                    else
+                                                        option(value='06' ) 06
+                                                    if (value=test.question[i].question_mark == "07")
+                                                        option(value='07' selected enindexabled ) 07
+                                                    else
+                                                        option(value='07' ) 07
+                                                    if (value=test.question[i].question_mark == "08")
+                                                        option(value='08' selected enabled ) 08
+                                                    else
+                                                        option(value='08' ) 08
+                                                    if (value=test.question[i].question_mark == "09")
+                                                        option(value='09' selected enabled ) 09
+                                                    else
+                                                        option(value='09' ) 09
+                                                    if (value=test.question[i].question_mark == "10")
+                                                        option(value='10' selected enabled ) 10
+                                                    else
+                                                        option(value='10' ) 10
+                                                span.p10
+                                        .clear
+                                        div
+                                            input.textarea0(type='textarea', name='question_cc[]' value=question_text['question_Text'])
+                                            span.p11
+                                    .question_text
+                                        - var k= 0
+                                        
+                                        each answer_item, answer_index in question_text['quesanswerList']
+                                            //- p= answer_item['answerText']
+                                            //- p= answer_index
+                                            - if(answer_index % 2 == 0)   
+                                                    //-each val in ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+                                                    .col-sm-12.quiz_section(class= 'clone_section_'+j)(id='cloning_element_'+j)
+                                                        .col-sm-6.quiz-first-6.first-6
+                                                            .col-xs-6
+                                                                label #{users[k]}. Enter Answer 
+                                                            .col-xs-6
+                                                                .answer
+                                                                    .delete_img
+                                                                        img(src='/images/delete.png')
+                                                            .col-sm-12
+                                                                input.textarea1(type='textarea', name='answer['+m+']['+k+']' value= question_text['quesanswerList'][answer_index].answerText)
+                                                                span.p12
+                                                                - k++
+                                                            .clear  
+                                                            .col-sm-12
+                                                                .col-xs-6
+                                                                    button.browse(type='button') Browse
+                                                                    div(style='height:0px;overflow:hidden')
+                                                                        input.fileInput(type='file', name='answer_image', accept="image/*")   
+                                                                //-input.fileInput(type='file', name='fileInput')
+                                                                .col-xs-6
+                                                                    img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image' name='image')
+                                                                    span.p18
+                                                            .clear
+                                                        - if(question_text['quesanswerList'][answer_index+1] != null)
+                                                            .col-sm-6.quiz-second-6.second-6
+                                                                .col-xs-6
+                                                                    label #{users[k]}. Enter Answer 
+                                                                .col-xs-6
+                                                                    .answer
+                                                                        .delete_img.stop_delete
+                                                                            img(src='/images/delete.png')
+                                                                .col-sm-12
+                                                                    input.textarea2(type='textarea', name='answer['+m+']['+k+']' value= question_text['quesanswerList'][answer_index+1].answerText)
+                                                                    span.p13
+                                                                    - k++
+                                                                .col-sm-12
+                                                                    .col-xs-6
+                                                                        button.browse(type='button') Browse
+                                                                        div(style='height:0px;overflow:hidden')
+                                                                            input.fileInput(type='file', name='answer_image' , accept="image/*")  
+                                                                    .col-xs-6
+                                                                        img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
+                                                                        span.p19
+                                                                        - j++
+                                                                .clear
+                                                            
+                                        //- .col-sm-12.quiz_section
+                                        //-     .col-sm-6.quiz-first-6.first-6
+                                        //-         .col-xs-6
+                                        //-                 label C. Enter Answer 
+                                        //-         .col-xs-6
+                                        //-             .answer
+                                        //-                 .delete_img
+                                        //-                     img(src='/images/delete.png')
+                                        //-         .col-sm-12
+                                        //-             input.textarea3(type='textarea', name='answer' value= test.question[i].quesanswerList[j].answerText)
+                                        //-             span.p14
+                                        //-             - j++
+                                        //-         .clear
+                                        //-         .col-sm-12
+                                        //-             .col-xs-6
+                                        //-                 button.browse(type='button') Browse
+                                        //-                 div(style='height:0px;overflow:hidden')
+                                        //-                     input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                        //-             .col-xs-6
+                                        //-                 img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
+                                        //-                 span.p20
+                                        //-         .clear
+                                        //-     .col-sm-6.quiz-second-6.second-6
+                                        //-         .col-xs-6
+                                        //-             label D. Enter Answer 
+                                        //-         .col-xs-6
+                                        //-             .answer
+                                        //-                 .delete_img
+                                        //-                     img(src='/images/delete.png')
+                                        //-         .col-sm-12
+                                        //-             input.textarea4(type='textarea', name='answer' value= test.question[i].quesanswerList[j].answerText )
+                                        //-             span.p15
+                                        //-             - j++
+                                        //-         .col-sm-12
+                                        //-             .col-xs-6
+                                        //-                 button.browse(type='button') Browse
+                                        //-                 div(style='height:0px;overflow:hidden')
+                                        //-                     input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                        //-             .col-xs-6
+                                        //-                 img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
+                                        //-                 span.p21
+                                        //-         .clear
+                                        .col-sm-12.add_answer(id='clone_answer_'+i+'_add_answer')
+                                                a.add-answer  Add Answer
+                                        .clear   
+                                        - i++  
+                                        - m++     
+                                        
+                                    
+                                    
+                                        //- .col-sm-12.quiz_section
+                                    //-     .col-sm-6.quiz-first-6.first-6
+                                    //-         .col-xs-6
+                                    //-                 label C. Enter Answer 
+                                    //-         .col-xs-6
+                                    //-             .answer
+                                    //-                 .delete_img
+                                    //-                     img(src='/images/delete.png')
+                                    //-         .col-sm-12
+                                    //-             input.textarea3(type='textarea', name='answer' value= test.question[0].answerlist[1][0][2])
+                                    //-             span.p14
+                                    //-         .clear
+                                    //-         .col-sm-12
+                                    //-             .col-xs-6
+                                    //-                 button.browse(type='button') Browse
+                                    //-                 div(style='height:0px;overflow:hidden')
+                                    //-                     input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                    //-             .col-xs-6
+                                    //-                 img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
+                                    //-                 span.p20
+                                    //-         .clear
+                                    //-     .col-sm-6.quiz-second-6.second-6
+                                    //-         .col-xs-6
+                                    //-             label D. Enter Answer 
+                                    //-         .col-xs-6
+                                    //-             .answer
+                                    //-                 .delete_img
+                                    //-                     img(src='/images/delete.png')
+                                    //-         .col-sm-12
+                                    //-             input.textarea4(type='textarea', name='answer' value= test.question[0].answerlist[1][0][3] )
+                                    //-             span.p15
+                                    //-         .col-sm-12
+                                    //-             .col-xs-6
+                                    //-                 button.browse(type='button') Browse
+                                    //-                 div(style='height:0px;overflow:hidden')
+                                    //-                     input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                    //-             .col-xs-6
+                                    //-                 img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
+                                    //-                 span.p21
+                                    //-         .clear
+                                    //- .col-sm-12.add_answer#clone_answer_0_add_answer
+                                    //-         a.add-answer  Add Answer
+                                    //- .clear
+                                
+                        .col-sm-12
+                            .add_form_questions
+                                input.add_question(type='button', value='Add Questions')
+                        .col-sm-12
+                            .div
+                                .add_crt_chall
+                                    input(type='submit', value='Create Challenge')

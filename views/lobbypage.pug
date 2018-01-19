@@ -1,0 +1,58 @@
+extends header_user
+block content
+  .container
+    .row
+      .col-sm-12
+        .lobby_h1
+          h1  Lobby 
+        .lobby_search
+          .col-sm-4
+            .lobby_search_inner
+              input(type="text" placeholder="Search..")
+              img(src="images/searchicon.png")
+          .col-sm-2.col-sm-onset-5
+            input(type='button', value="Create Challenge" , onclick="window.location.href='/create_challenge'")
+  .sitecontent
+    .container
+      .row
+        .col-sm-12
+          .lobby_table
+            .form_inner
+              #followup_tbl_wrapper.dataTables_wrapper.no-footer
+                table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+                  thead.table_heading
+                    tr(role="row")
+                      th.sorting_disabled.tbl-head.chalange_col Challenges
+                      th.sorting_disabled.tbl-head.style_col Style
+                      th.sorting_disabled.tbl-head.entry_col Entry
+                      th.sorting_disabled.tbl-head.deadline_col Deadline
+                      th.sorting_disabled.tbl-head.manage_col Manager
+                      th.sorting_disabled.tbl-head.refresh_col
+                        a Refresh
+                  tbody
+                  - var d = new Date();
+                  - var year= d.getFullYear();
+                  - var month = d.getMonth()+1;
+                  - month = month < 10 ? '0'+month : month;
+                  - var date = d.getDate();
+                  - date = date < 10 ? '0'+date : date;
+                  - var today = month+'/'+date+'/'+year
+                  - var hours = d.getHours();
+                  - var minutes = d.getMinutes();
+                  - var ampm = hours >= 12 ? 'PM' : 'AM';
+                  - hours = hours % 12;
+                  - hours = hours ? hours : 12; // the hour '0' should be '12'
+                  - minutes = minutes < 10 ? '0'+minutes : minutes;
+                  - var strTime = hours + ':' + minutes + '  ' + ampm;
+                  for data in test
+                    if(data.Date > today)
+                      if(data.time > strTime)
+                      tr(role="row")
+                        td= data.challengeName
+                        td= data.entry
+                        td= data.entry
+                        td= data.Date
+                        td= data.manager
+                        td
+                          a enter
+                    

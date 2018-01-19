@@ -1,0 +1,76 @@
+extends header
+block content
+  .container
+    .row
+      .col-sm-offset-3.col-sm-6.col-sm-onset-3
+        .signin_form
+          form(action="/signup", name='signup' method="post")
+            h1  Sign Up 
+            .login_form
+              .col-sm-12
+                div
+                  input(type="text" name="username" id ="username" placeholder="Username")
+                  span#p1
+              .col-sm-12
+                div
+                  input(type="text" name="email" id ="email" placeholder="Email" autocomplete="off")
+                  span#p2
+              .col-sm-12
+                div
+                  input(type="password" name="password" id="password" placeholder="Password" autocomplete="off")
+                  span#p3
+              .col-sm-12
+                div
+                  select.select#country(name='country')
+                    option(selected enabled value='') Country
+                    option(value='US') United States
+                    option(value='AF') Afghanistan
+                    option(value='AX') Åland Islands
+                    option(value='AL') Albania
+                    option(value='DZ') Algeria
+                    option(value='AS') American Samoa
+                  span#p4
+              .col-sm-12
+                div
+                  select.select#state(name='state')
+                    option(selected enabled value='') State
+                    option(value='US') United States
+                    option(value='AF') Afghanistan
+                    option(value='AX') Åland Islands
+                    option(value='AL') Albania
+                    option(value='DZ') Algeria
+                    option(value='AS') American Samoa
+                  span#p5
+              .col-sm-12
+                div
+                  label Date of Birth
+                .col-sm-6
+                  select.select#month(name='month')
+                    option(selected enabled value='') MM
+                .col-sm-3
+                  select.select#date(name="date")
+                    option(selected enabled value='') DD
+                .col-sm-3
+                  select.select#year(name="year")
+                    option(selected enabled value='') YY
+                span#p8
+              .col-sm-12
+                span#alert
+              .col-sm-12
+                p.login_acc_info
+                  input#remember(type='checkbox', name='remember', checked=true)
+                  span I Agree to the 
+                  a(href="#") TERMS OF USE 
+                  span#span and 
+                  a(href="#") PRIVACY POLICY 
+              .col-sm-12.login_submit
+                div
+                  //- a(href="/lobbypage") 
+                  button#signup Sign Up
+                  //- input(type="submit" value="Sign Up")
+              .col-sm-12
+                p.login_ac_info
+                  | Already have an account? 
+                  a(href="/") Login
+              .clear
+  script(src="javascripts/date.js")

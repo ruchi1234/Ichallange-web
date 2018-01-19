@@ -1,0 +1,37 @@
+extends header
+block content
+  .container
+    .row
+      .col-sm-offset-3.col-sm-6.col-sm-onset-3
+        .signin_form
+          form(action="/", name='signin' method="post")
+            h1  Sign In
+            .login_form
+              .col-sm-12
+                div
+                  input(type="text" autocomplete="off" name="email_login" id="email_login" placeholder="Username or Email")
+                  span#l1
+              .col-sm-12
+                div
+                  input(type="password" autocomplete="off" name="password_login" id="password_login" placeholder="Password")
+                  span#l2
+                span= span  
+              .col-sm-12
+                p.login_forget
+                  a(href="/forgot_password") Forgot Password ? 
+              .col-sm-12.login_submit
+                div
+                  button#signin Sign In
+              .col-sm-12
+                p.login_ac_info
+                  | Don’t have an account? 
+                  a(href="/signup" method="post") Sign Up
+              .col-sm-6
+                p.loggin_ac_social
+                  a(href="/google" method="get")
+                   input(type="button"  name="" id="" value="GOOGLE+ ")
+              .col-sm-6
+                p.loggin_ac_social
+                  a(href="/facebook" method="get")
+                   input(type="button"  name="" id="" value="facebook ")
+              .clear

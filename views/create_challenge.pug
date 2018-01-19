@@ -1,0 +1,220 @@
+extends header_user
+block content
+    .container
+        .row
+            .col-sm-12
+                .crt_chall_h1
+                    h1  Create Challenge 
+            .col-sm-12
+                .crt_chall_form
+                    form#submit(action="/create_challenge", enctype="multipart/form-data",  method="post")
+                        .manager_sec
+                            .col-sm-2
+                                label Manager: 
+                            .col-sm-10
+                                div
+                                    p= Username
+                            .clear  
+                        .col-sm-2
+                            label Challenge Name: 
+                        .col-sm-4.col-sm-onset-6
+                            div
+                                input.challenge_name(type='text', name="challenge_name")
+                                span.p1
+                        .clear
+                        .col-sm-2
+                            label Template 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.template(name="template")
+                                    option(selected disabled value='') Template
+                                    option(value='volvo') Volvo
+                                    option(value='saab') Saab
+                                    option(value='mercedes') Mercedes
+                                    option(value='audi') Audi
+                                span.p2
+                        .clear
+                        .col-sm-2
+                            label Deadline 
+                        .col-sm-4.col-sm-onset-6.deadline_date_upr
+                            .col-sm-6.dead_calender
+                                .col-xs-2
+                                    p Date
+                                .col-xs-10.deadline_date
+                                    input.date_cc(type='text', name="date_cc")
+                                    img.id_imgcalendar(src='images/calender.png', )
+                                    span.p3
+                                .clear
+                            .col-sm-6.dead_time
+                                .col-xs-2
+                                    p Time
+                                .col-xs-10.deadline_date
+                                    input.time(type='text', name='time', placeholder='MM:HH')
+                                    span.p4
+                                .clear
+                        .clear
+                        .col-sm-2
+                            label Category 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.category(name="category")
+                                    option(selected disabled value='') Category
+                                    option(value='tvshow') TV Show
+                                    option(value='contest') Contest
+                                    option(value='sports') Sports
+                                    option(value='awardshow') Award Show
+                                    option(value='other') Other
+                                span.p5
+                        .clear
+                        .col-sm-2
+                            label Series 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.series(name="series")
+                                    option(selected disabled value='') Series
+                                    option(value='series') Series
+                                    option(value='once') Once
+                                span.p6
+                        .clear
+                        .col-sm-2
+                            label Entry 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.entry(name="entry")
+                                    option(selected disabled value='') Entry
+                                    option(value='public') Public
+                                    option(value='private') Private
+                                span.p7
+                        .clear
+                        .col-sm-2
+                            label Invities 
+                        .col-sm-4.col-sm-onset-6
+                            .custom_select
+                                select.select.invites(name="invites")
+                                    option(selected disabled value='') Invites
+                                    option(value='Contacts') contacts
+                                span.c8
+                        .clear        
+                        .col-sm-2
+                            label Prize 
+                        .col-sm-10
+                            div
+                                input.textarea(type='textarea', name='prize')
+                                span.p9
+                        .clear
+                        .chalange_second_step.challenge
+                            .clone_section_question.cloning_question#clone_answer_0
+                                .col-sm-12.chalange_questions
+                                    .col-sm-2.col-xs-6
+                                        label.question_label 1. Enter Question 
+                                    .col-sm-2.col-xs-6.col-sm-onset-8
+                                        .custom_select
+                                            select.select.question(name="question")
+                                                option(value='10') 10 Points
+                                                option(value='09') 09 Points
+                                                option(value='08') 08 Points
+                                                option(value='07') 07 Points
+                                                option(value='06') 06 Points
+                                                option(value='05') 05 Points
+                                                option(value='04') 04 Points
+                                                option(value='03') 03 Points
+                                                option(value='02') 02 Points
+                                                option(value='01') 01 Points
+                                            span.p10
+                                    .clear
+                                    div
+                                        input.textarea0(type='textarea', name='question_cc')
+                                        span.p11
+                                .question_text
+                                    .col-sm-12.quiz_section.clone_section#cloning_element
+                                        .col-sm-6.quiz-first-6.first-6
+                                            .col-xs-6
+                                                label A. Enter Answer 
+                                            .col-xs-6
+                                                .answer
+                                                    .delete_img
+                                                        img(src='images/delete.png')
+                                            .col-sm-12
+                                                input.textarea1(type='textarea', name='answer')
+                                                span.p12
+                                            .clear  
+                                            .col-sm-12
+                                                .col-xs-6
+                                                    button.browse(type='button') Browse
+                                                    div(style='height:0px;overflow:hidden')
+                                                        input.fileInput(type='file', name='answer_image', accept="image/*")   
+                                                //-input.fileInput(type='file', name='fileInput')
+                                                .col-xs-6
+                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image' name='image')
+                                                    span.p18
+                                            .clear
+                                        .col-sm-6.quiz-second-6.second-6
+                                            .col-xs-6
+                                                label B. Enter Answer 
+                                            .col-xs-6
+                                                .answer
+                                                    .delete_img.stop_delete
+                                                        img(src='images/delete.png')
+                                            .col-sm-12
+                                                input.textarea2(type='textarea', name='answer')
+                                                span.p13
+                                            .col-sm-12
+                                                .col-xs-6
+                                                    button.browse(type='button') Browse
+                                                    div(style='height:0px;overflow:hidden')
+                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")  
+                                                .col-xs-6
+                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    span.p19
+                                            .clear
+                                    .col-sm-12.quiz_section
+                                        .col-sm-6.quiz-first-6.first-6
+                                            .col-xs-6
+                                                    label C. Enter Answer 
+                                            .col-xs-6
+                                                .answer
+                                                    .delete_img
+                                                        img(src='images/delete.png')
+                                            .col-sm-12
+                                                input.textarea3(type='textarea', name='answer')
+                                                span.p14
+                                            .clear
+                                            .col-sm-12
+                                                .col-xs-6
+                                                    button.browse(type='button') Browse
+                                                    div(style='height:0px;overflow:hidden')
+                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                                .col-xs-6
+                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    span.p20
+                                            .clear
+                                        .col-sm-6.quiz-second-6.second-6
+                                            .col-xs-6
+                                                label D. Enter Answer 
+                                            .col-xs-6
+                                                .answer
+                                                    .delete_img
+                                                        img(src='images/delete.png')
+                                            .col-sm-12
+                                                input.textarea4(type='textarea', name='answer')
+                                                span.p15
+                                            .col-sm-12
+                                                .col-xs-6
+                                                    button.browse(type='button') Browse
+                                                    div(style='height:0px;overflow:hidden')
+                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                                .col-xs-6
+                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    span.p21
+                                            .clear
+                                    .col-sm-12.add_answer#clone_answer_0_add_answer
+                                            a.add-answer  Add Answer
+                                    .clear
+                                
+                        .col-sm-12
+                            .add_form_questions
+                                input.add_question(type='button', value='Add Questions')
+                        .col-sm-12
+                            .div
+                                .add_crt_chall
+                                    input(type='submit', value='Create Challenge')
