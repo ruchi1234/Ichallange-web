@@ -7,31 +7,31 @@ block footer_user
 						h3 Company
 						ul
 							li
-								a(href="#") About
+								a(href="/about_us") About
 							li
-								a(href="#") Careers
+								a(href="/careers") Careers
 							li
-								a(href="#") Partnership
+								a(href="/partnership") Partnership
 							li
-								a(href="#") Investers
+								a(href="/investers") Investers
 
 				.col-sm-4
 					div
 						h3 Support
 						ul
 							li
-								a(href="#") Contact Us
+								a(href="/contact_us") Contact Us
 							li
-								a(href="#") Feedback
+								a(href="/feedback") Feedback
 
 				.col-sm-4
 					div
 						h3 Marketers
 						ul         
 							li
-								a(href="#") Sponsors
+								a(href="/sponsors") Sponsors
 							li
-								a(href="#") Advertisers
+								a(href="/Advertisers") Advertisers
 	.copyright
 		.container
 			.row
@@ -40,23 +40,30 @@ block footer_user
 	//- End of footer
 
 	//- Jquery
-	script(src="bootstrap/js/bootstrap.min.js")
-	script(src="js/custom.js")
+	script(src="/bootstrap/js/bootstrap.min.js")
+	script(src="/js/custom.js")
 	
-	
-	script(src="javascripts/create_challenge.js")
-	script(src="javascripts/index.js")
-	link(href="css/datatable.css")
+	//-script(src='/javascripts/lobby.js')
+	script(src="/javascripts/create_challenge.js")
+	script(src="/javascripts/profile.js")
+	script(src="/javascripts/index.js")
+	script(src="/javascripts/contacts.js")
+	link(href="/css/datatable.css")
+	//- Bootstrap for icon
+	link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
 	//- link(href="./node_modules/cropper/src/css/cropper.css" rel="stylesheet")
 	//- script(src="./node_modules/croppersrc/js/cropper.js")
 	link(rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css")
 	script(src="https:////code.jquery.com/jquery-1.10.2.js")
 	script(src="//code.jquery.com/ui/1.11.2/jquery-ui.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js")
-	link(href='css/timepicker.css')
-	script(src="http://malsup.github.com/jquery.form.js")
-	
-	script(src="js/cropper/dist/cropper.js")
+	link(href='/css/timepicker.css')
+	//- script(src="http://malsup.github.com/jquery.form.js")
+	script(src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js")
+
+	script(src="/js/cropper/dist/cropper.js")
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js')
+
 	
 	
 	//- script(src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css")

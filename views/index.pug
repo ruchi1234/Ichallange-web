@@ -1,5 +1,63 @@
-extends layout
-
+extends header
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    .row
+      .padding_top_video
+       .col-sm-offset-2.col-sm-6.col-sm-onset-3
+          iframe(type='text/html' width='640' height='390' src='http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com' autoplay='0' frameborder='0')
+    .row
+      .col-sm-12
+        .padding_top_lobby
+          .lobby_search
+            .col-sm-4
+              .lobby_search_inner
+                input#myInput(type="text" placeholder="Search..")
+                img(src="images/searchicon.png")
+  .sitecontent
+    .container
+      .row
+        .col-sm-12
+          .lobby_table
+            .form_inner
+              #followup_tbl_wrapper.dataTables_wrapper.no-footer
+                table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+                  thead.table_heading
+                    tr(role="row")
+                      th.sorting_disabled.tbl-head.chalange_col CHALLENGES
+                      th.sorting_disabled.tbl-head.style_col MANAGER
+                      th.sorting_disabled.tbl-head.entry_col LEADER
+                      th.sorting_disabled.tbl-head.deadline_col POINTS
+                  tbody
+                    - var d = new Date();
+                    - var year= d.getFullYear();
+                    - var month = d.getMonth()+1;
+                    - month = month < 10 ? '0'+month : month;
+                    - var date = d.getDate();
+                    - date = date < 10 ? '0'+date : date;
+                    - var today = year+'-'+month+'-'+date
+                    for challenge in challenges
+                      -if(player.length > 0)
+                        -var flag_player_name="";
+                        -var flag_player_marks=0;
+                        -var flag_total=0;
+                        -for(i=0; i<player.length; i++ )
+                          - if( challenge._id == player[i]._id)
+                            -flag_player_name = player[i].player_name
+                            -flag_player_marks = parseInt(player[i].highestMarks)
+                            -flag_total = parseInt(player[i].maxMarks)
+                      -if(challenge.entry == 'public')
+                        -if(challenge.Date > today || challenge.Date == today)
+                          tr(role="row")
+                            td= challenge.challengeName
+                            td= challenge.manager
+                            -if(flag_player_name )
+                              td= flag_player_name
+                            -else
+                              td -
+                            -if(flag_player_marks && flag_total)
+                              td= flag_player_marks+'/'+flag_total
+                            -else if(flag_player_marks==0)
+                              td= flag_player_marks+'/'+flag_total
+                            -else
+                              td -
+                    

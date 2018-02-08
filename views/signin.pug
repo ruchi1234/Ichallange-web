@@ -1,10 +1,20 @@
 extends header
 block content
   .container
+    if messages.error
+      .alert.alert-danger.failure-alert
+        div= messages.error
+    if messages.info
+      .alert.alert-info.failure-alert
+        div= messages.info
+    if messages.success
+      .alert.alert-success.failure-alert
+        div= messages.success
+  .container
     .row
       .col-sm-offset-3.col-sm-6.col-sm-onset-3
         .signin_form
-          form(action="/", name='signin' method="post")
+          form(action="/signin", name='signin' method="post")
             h1  Sign In
             .login_form
               .col-sm-12
@@ -26,12 +36,4 @@ block content
                 p.login_ac_info
                   | Don’t have an account? 
                   a(href="/signup" method="post") Sign Up
-              .col-sm-6
-                p.loggin_ac_social
-                  a(href="/google" method="get")
-                   input(type="button"  name="" id="" value="GOOGLE+ ")
-              .col-sm-6
-                p.loggin_ac_social
-                  a(href="/facebook" method="get")
-                   input(type="button"  name="" id="" value="facebook ")
               .clear

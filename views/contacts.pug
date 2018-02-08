@@ -1,0 +1,73 @@
+extends header_user
+block content
+    .container
+        .row
+            .col-sm-12
+                .col-sm-6
+                    .lobby_h1
+                        h1  Existing Contacts
+                .col-sm-12.add_contact
+                    //-a(href='/add_contact').add_contact_button  Add Contact
+                    input(type='button', id="button_add_contact", value='Add Contact', data-toggle="modal" data-target="#myModal_Contacts")
+    .sitecontent
+        .container
+            .row
+                .col-sm-12
+                    .lobby_table
+                        .form_inner
+                            #followup_tbl_wrapper.dataTables_wrapper.no-footer
+                                table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+                                    thead.table_heading
+                                        tr(role="row")
+                                            th.sorting_disabled.tbl-head.chalange_col Name
+                                            th.sorting_disabled.tbl-head.style_col.chalange_col Email
+                                            th.sorting_disabled.tbl-head.entry_col.chalange_col Mobile
+                                            th.sorting_disabled.tbl-head.deadline_col.chalange_col 
+                                            th.sorting_disabled.tbl-head.deadline_col.chalange_col 
+                                    tbody
+                                        for contact in contacts
+                                            tr(role="row")
+                                                td= contact.contact_name
+                                                td.email_for_contact= contact.contact_email
+                                                td= contact.contact_mobile
+                                                td 
+                                                    //- .edit_contact_button
+                                                    //-     input(type='button', id="button_edit_contact", value='Edit', data-toggle="modal" data-target="#myModal_edit_contacts")
+                                                    a(href='/contacts/edit_contact/'+ contact._id).edit_contact
+                                                        img.edit_contact(src="images/edit.png", alt="", srcset="")   
+                                                td 
+                                                    a(href='/contacts/delete_contact/'+ contact._id).delete_contact
+                                                        img.delete_contact(src="images/delete.png", alt="", srcset="") 
+    #myModal_Contacts.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") ×
+                    h4
+                .modal-body
+                    .container
+                        .row
+                            .col-sm-7.col-sm-onset-3
+                                .signin_form
+                                    form(action="/contacts/add_contacts", name='add_contact_form' method="post")
+                                        h1  Contacts
+                                        .login_form
+                                            .col-sm-12
+                                                div
+                                                input#add_contact_name(name='add_contact_name', placeholder='Name', type='text', tabindex='1', autofocus='')
+                                                span.contact_name
+                                            .col-sm-12
+                                                div
+                                                input#add_contact_email(name='add_contact_email', placeholder='Email Address', type='email', tabindex='2')
+                                                span.contact_email
+                                            .col-sm-12
+                                                div
+                                                input#add_contact_mobile(name='add_contact_mobile', placeholder='Mobile Number', type='text', tabindex='3')
+                                                span.contact_mobile
+                                            span.all
+                                            .col-sm-12.login_submit
+                                                div
+                                                button#add_contacts Add Contacts
+                                            .clear
+    

@@ -22,47 +22,44 @@ $(document).ready(function () {
         var textarea2 = $(".textarea2").val();
         var textarea3 = $(".textarea3").val();
         var textarea4 = $(".textarea4").val();
-        if (challenge_name == '' || template == '' || date == '' || time == '' || category == '' || series == '' || entry == '' || invites == '' || textarea == '' || question == '' || textarea0 == '' || textarea1 == '' || textarea2 == '' || textarea3 == '' || textarea4 == ''){
+        var image = $('.fileInput').val();
+        if (challenge_name == '' || template == '' || date == '' || time == '' || category == '' || series == '' || entry == '' || textarea == '' || question == '' || textarea0 == ''){
             $('.challenge_name').focus();
             $('.template').focus();
             // $('.date').focus();
-            // $('.date_cc').css('border-color', 'red');
-            // $('.p3').text('**Enter the Date');
+            $('.date_cc').css('border-color', 'red');
             // $('.time').focus();
-            // $('.time').css('border-color', 'red');
-            // $('.p4').text('**Enter the Time');
+            $('.time').css('border-color', 'red');
             $('.category').focus();
             $('.series').focus();
             $('.entry').focus();
-            $('.invites').focus();
+            // $('.invites').focus();
             $('.textarea').focus();
             $('.question').focus();
             $('.textarea0').focus();
-            $('.textarea1').focus();
-            $('.textarea2').focus();
-            $('.textarea3').focus();
-            $('.textarea4').focus();
+            if(image == ''){
+                $('.textarea1').focus();
+                $('.textarea2').focus();
+                $('.textarea3').focus();
+                $('.textarea4').focus();
+            }   
             return false;
         }
         else 
         {
             if (challenge_name.length != 0)
             {
-                var challenge_nameRegex = /^[a-zA-Z ]+$/;
-                if (!challenge_nameRegex.test(challenge_name)) {
-                    $('.challenge_name').css('border-color', 'red');
-                    $('.p1').text('**Enter the Challenge Name');
-                    return false;
-                }
-                else {
-                    $('.challenge_name').css('border-color', 'green');
-                    $('.p1').text('');
-                    
-             // For showing browse button
-function chooseFile() {
-    $(".fileInput").click();
-    }   }
+                $('.challenge_name').css('border-color', 'green');
+                $('.p1').text('');
+                
             }
+            else 
+            {
+                $('.challenge_name').css('border-color', 'red');
+                $('.p1').text('**Enter the Challenge Name');
+                return false;
+            }
+            
             if (template.length != 0) {
                 $('.template').css('border-color', 'green');
                 $('.p2').text('');
@@ -77,12 +74,7 @@ function chooseFile() {
             if (date.length != 0) {
                 $('.date_cc').css('border-color', 'green');
                 $('.p3').text('');
-                
-             // For showing browse button
-function chooseFile() {
-    $(".fileInput").click();
-    }   }
-            
+            }
             if (time.length != 0) {
                     $('.time').css('border-color', 'green');
                     $('.p4').text('');
@@ -126,16 +118,16 @@ function chooseFile() {
                 return false;
             }
 
-            if (invites.length != 0) {
-                $('.invites').css('border-color', 'green');
-                $('.c8').text('');
+            // if (invites.length != 0) {
+            //     $('.invites').css('border-color', 'green');
+            //     $('.c8').text('');
                 
-            }
-            else {
-                $('.invites').css('border-color', 'red');
-                $('.c8').text('**Invites can not be empty');
-                return false;
-            }
+            // }
+            // else {
+            //     $('.invites').css('border-color', 'red');
+            //     $('.c8').text('**Invites can not be empty');
+            //     return false;
+            // }
 
             if (textarea.length != 0) {
                 $('.textarea').css('border-color', 'green');
@@ -147,60 +139,63 @@ function chooseFile() {
                 $('.p9').text('**Enter the Prizes');
                 return false;
             }
-            if (textarea0.length != 0) {
-                $('.textarea0').css('border-color', 'green');
-                $('.p11').text('');
+            if(image == ''){
+                if (textarea0.length != 0) {
+                    $('.textarea0').css('border-color', 'green');
+                    $('.p11').text('');
+                
+                }
+                else {
+                    $('.textarea0').css('border-color', 'red');
+                    $('.p11').text('**Enter the Question');
+                    return false;
+                }
+                if (textarea1.length != 0) {
+                        $('.textarea1').css('border-color', 'green');
+                        $('.p12').text('');
+                    
+                    }
+                else {
+                    $('.textarea1').css('border-color', 'red');
+                    $('.p12').text('**Enter the Answer');
+                    return false;
+                }
+    
+                if (textarea2.length != 0) {
+                        $('.textarea2').css('border-color', 'green');
+    
+                        $('.p13').text('');
+                    
+                    }
+                else {
+                    $('.textarea2').css('border-color', 'red');
+                    $('.p13').text().show();
+                    $('.p13').text('**Enter the Answer');
+                    return false;
+                }
+    
+               if (textarea3.length != 0) {
+                    $('.textarea3').css('border-color', 'green');
+                    $('.p14').text('');
+                    
+                }
+                else {
+                    $('.textarea3').css('border-color', 'red');
+                   $('.p14').text('**Enter the Answer');
+                    return false;
+                }
+                if (textarea4.length != 0) {
+                    $('.textarea4').css('border-color', 'green');
+                    $('.p15').text('');
+                    
+                }
+                else {
+                    $('.textarea4').css('border-color', 'red');
+                    $('.p15').text('**Enter the Answer');
+                    return false;
+                }
+            }
             
-            }
-            else {
-                $('.textarea0').css('border-color', 'red');
-                $('.p11').text('**Enter the Question');
-                return false;
-            }
-            if (textarea1.length != 0) {
-                    $('.textarea1').css('border-color', 'green');
-                    $('.p12').text('');
-                
-                }
-            else {
-                $('.textarea1').css('border-color', 'red');
-                $('.p12').text('**Enter the Answer');
-                return false;
-            }
-
-            if (textarea2.length != 0) {
-                    $('.textarea2').css('border-color', 'green');
-
-                    $('.p13').text('');
-                
-                }
-            else {
-                $('.textarea2').css('border-color', 'red');
-                $('.p13').text().show();
-                $('.p13').text('**Enter the Answer');
-                return false;
-            }
-
-           if (textarea3.length != 0) {
-                $('.textarea3').css('border-color', 'green');
-                $('.p14').text('');
-                
-            }
-            else {
-                $('.textarea3').css('border-color', 'red');
-               $('.p14').text('**Enter the Answer');
-                return false;
-            }
-            if (textarea4.length != 0) {
-                $('.textarea4').css('border-color', 'green');
-                $('.p15').text('');
-                
-            }
-            else {
-                $('.textarea4').css('border-color', 'red');
-                $('.p15').text('**Enter the Answer');
-                return false;
-            }
 
             
         }return true;
@@ -209,9 +204,10 @@ function chooseFile() {
 });
 
 $(".challenge_name").on("focusout", function () {
-    var $challenge_name = this.value;
-    if ($challenge_name.length != 0) {
-        validateName($challenge_name);
+    var challenge_name = this.value;
+    if (challenge_name.length != 0) {
+        $('.challenge_name').css('border-color', 'green');
+        $('.p1').text('');
     }
     else {
         $('.challenge_name').css('border-color', 'red');
@@ -246,6 +242,11 @@ $(".challenge_name").on("focusout", function () {
 //          return false;
 //     }
 // });
+
+$('.time').on('mouseout', function(){
+    $(this).css('border-color', 'green');
+    $('.p4').text('');
+})
 
 $(".category").on("focusout", function () {
     var $category = this.value;
@@ -286,18 +287,18 @@ $(".entry").on("focusout", function () {
     }
 });
 
-$(".invites").on("focusout", function () {
-    var $invites = this.value;
-    if ($invites.length != 0) {
-        $('.invites').css('border-color', 'green');
-        $('.c8').text('');
-    }
-    else {
-        $('.invites').css('border-color', 'red');
-        $('.c8').text('**Invites can not be empty');
-        return false;
-    }
-});
+// $(".invites").on("focusout", function () {
+//     var $invites = this.value;
+//     if ($invites.length != 0) {
+//         $('.invites').css('border-color', 'green');
+//         $('.c8').text('');
+//     }
+//     else {
+//         $('.invites').css('border-color', 'red');
+//         $('.c8').text('**Invites can not be empty');
+//         return false;
+//     }
+// });
 
 $(".textarea").on("focusout", function () {
     var $textarea = this.value;
@@ -316,27 +317,28 @@ $(".textarea").on("focusout", function () {
 $(".textarea0").on("focusout", function () {
     var $textarea0 = this.value;
     if ($textarea0.length != 0) {
-        $('.textarea0').css('border-color', 'green');
-        $('.p11').text('');
+        $(this).css('border-color', 'green');
+        $(this).siblings().text('');
     }
     else {
-        $('.textarea0').css('border-color', 'red');
-        $('.p11').text('**Enter the Question');
+        $(this).css('border-color', 'red');
+        $(this).siblings().text('**Enter the Question');
         return false;
     }
 });
 
+
 $(".textarea1").on("focusout", function () {
     var $textarea1 = this.value;
     if ($textarea1.length != 0) {
-        $('.textarea1').css('border-color', 'green');
+        $(this).css('border-color', 'green');
         $('.p12').show();
-        $('.p12').text('');
+        $(this).siblings().text('');
     }
     else {
-        $('.textarea1').css('border-color', 'red');
+        $(this).css('border-color', 'red');
         $('.p12').show();
-        $('.p12').text('**Enter the Answer');
+        $(this).siblings().text('**Enter the Answer');
         return false;
     }
 });
@@ -344,14 +346,14 @@ $(".textarea1").on("focusout", function () {
 $(".textarea2").on("focusout", function () {
     var $textarea2 = this.value;
     if ($textarea2.length != 0) {
-        $('.textarea2').css('border-color', 'green');
+        $(this).css('border-color', 'green');
         $('.p13').show();
-        $('.p13').text('');
+        $(this).siblings().text('');
     }
     else {
-        $('.textarea2').css('border-color', 'red');
+        $(this).css('border-color', 'red');
         $('.p13').show();
-        $('.p13').text('**Enter the Answer');
+        $(this).siblings().text('**Enter the Answer');
         return false;
     }
 });
@@ -359,12 +361,12 @@ $(".textarea2").on("focusout", function () {
 $(".textarea3").on("focusout", function () {
     var $textarea3 = this.value;
     if ($textarea3.length != 0) {
-        $('.textarea3').css('border-color', 'green');
-        $('.p14').text('');
+        $(this).css('border-color', 'green');
+        $(this).siblings().text('');
     }
     else {
-        $('.textarea3').css('border-color', 'red');
-        $('.p14').text('**Enter the Answer');
+        $(this).css('border-color', 'red');
+        $(this).siblings().text('**Enter the Answer');
         return false;
     }
 });
@@ -372,12 +374,12 @@ $(".textarea3").on("focusout", function () {
 $(".textarea4").on("focusout", function () {
     var $textarea4 = this.value;
     if ($textarea4.length != 0) {
-        $('.textarea4').css('border-color', 'green');
-        $('.p15').text('');
+        $(this).css('border-color', 'green');
+        $(this).siblings().text('');
     }
     else {
-        $('.textarea4').css('border-color', 'red');
-        $('.p15').text('**Enter the Answer');
+        $(this).css('border-color', 'red');
+        $(this).siblings().text('**Enter the Answer');
         return false;
     }
 });
@@ -395,51 +397,86 @@ $(".template").on("focusout", function () {
     }
 });
 
-function validateName(challenge_name) {
-    var challenge_nameRegex = /^[a-zA-Z ]+$/;
-    if (!challenge_nameRegex.test(challenge_name)) {
-        $('.challenge_name').css('border-color', 'red');
-        $('.p1').text('**Invalid Challenge Name');
-        return false;
-    }
-    else {
-        $('.challenge_name').css('border-color', 'green');
-        $('.p1').text('');
-        return true;
-    }
-}
+// function validateName(challenge_name) {
+//     var challenge_nameRegex = /^[a-zA-Z ]+$/;
+//     if (!challenge_nameRegex.test(challenge_name)) {
+//         $('.challenge_name').css('border-color', 'red');
+//         $('.p1').text('**Invalid Challenge Name');
+//         return false;
+//     }
+//     else {
+//         $('.challenge_name').css('border-color', 'green');
+//         $('.p1').text('');
+//         return true;
+//     }
+// }
 
 
 
 $(function () {
-    $(".date_cc").datepicker();
+    $(".date_cc").datepicker({
+        changeMonth: true, 
+        changeYear: true, 
+        dateFormat: 'yy-mm-dd',
+        minDate: 'today',
+       onSelect: function(dateText) {
+        $('.date_cc').css('border-color', 'green');
+        $('.p3').text('');
+        // $sD = new Date(dateText);
+        // $("input#DateTo").datepicker('option', 'maxDate', min);
+        }
+        
+    });
 });
 
 $(function () {
     $('.time').timepicker({
-        //timeFormat: 'mm:h p',
         dynamic: false,
         dropdown: true,
         scrollbar: true,
         scrollDefault: 'now'
     });
+    
 });
 
 
 //Deleting the answers
 
 $(".delete_img").hide();
-$(".stop_delete").click(function(){
+
+$(".stop_delete").on('click',function(){
     $(this).eq(0).parent().parent().next().find('span').text('**A question must have atleast 2 answers.');   
 });
-// $(".del_4").click(function(){
-//     $(".del_3").show();
-//     $(".del_3").css('display','block');
-//     $(this).parent().parent().parent().remove();
-// });
-// $(".del_3").click(function () {
-//     $(this).parent().parent().parent().parent().remove();
-// });
+
+$('.stop_delete').on('mouseout', function(){
+    $(this).eq(0).parent().parent().next().find('span').text('');
+})
+
+$(document).ready(function () {
+    for(i=0; i< $('.question_text').length; i++){
+        $('.question_text').eq(i).children().last().prev().prev().find('.delete_img').last().show();
+    }
+});
+
+$(document).on('click','.delete_img',function(){
+    var parent = $(this).parent().parent().parent().parent().parent();
+    console.log(parent);
+    var children = $(this).parent().parent().parent().parent().parent().children().length;
+    if(children > 3)
+    {
+        var length = $(parent).children().last().prev().prev().children().length;
+        if(length %2 == 0){
+            $(this).parent().parent().parent().parent().find('.first-6').find('.delete_img').show()
+            $(this).parent().parent().parent().remove();
+        }
+        else{
+            $(this).parent().parent().parent().parent().prev().last().find('.second-6').find('.delete_img').show();    
+            $(this).parent().parent().parent().parent().remove();
+        }
+    }
+    
+    });
+
 
 function genCharArray(charA, charZ) 
 {
@@ -450,17 +487,21 @@ function genCharArray(charA, charZ)
         }
         return a;
 }
-var counter = 0;
+
 var img = 5;
+
+
+
+
 $(document).on('click','.add-answer',function()
 {
-    
+    var counter = $(this).parent().parent().children().length - 1;
     var array = genCharArray('a', 'z'); 
     var parent_container = $(this).parent().parent().parent().attr('id');
     var parent_container_child_length = $('#'+parent_container+' .quiz_section .col-sm-6').length;
     
-    var cloneElement = $('.clone_section_0').eq(0).clone()
-        .attr('id', 'clone_index_' + counter);
+    var cloneElement = $('.clone_section').eq(0).clone()
+        .attr('id', 'clone_index_'+counter);
     if (parent_container_child_length % 2 == 0) 
     {
         $(cloneElement).removeClass('clone_section_0');
@@ -478,20 +519,23 @@ $(document).on('click','.add-answer',function()
             if (i == parent_container_child_length )
             {
                 $(cloneElement).find('label').text(array[i] + '. Enter Answer');
+                $(cloneElement).find('input[type="radio"]').val(array[i]);
+                $(cloneElement).find('image_answer').attr('src','imageplaceholder.png');
                 $(cloneElement).find(".second-6").remove().end().appendTo("#"+parent_container)
                 .insertBefore("#"+parent_container+"_add_answer");
                 $(cloneElement).find('input[type="textarea"]').val('');
                 $(cloneElement).find('input[type="textarea"]').css('border','');
                 $(cloneElement).find('.first-6').find('.delete_img').show()
                 $(cloneElement).find('.first-6').find('.delete_img').css('display', 'block');
-                // console.log($('.add-answer').index(this));
+                $(cloneElement).find('.image_answer').attr('src','/images/imageplaceholder.png');
                 var k = $('.add-answer').index(this)
                     for( j=0; j<=parent_container_child_length; j++){
                         if(j == parent_container_child_length){
                             $(cloneElement).parent().find('input[type="textarea"]').eq(j).first().attr('name','answer['+k+']['+j+']');
+                            $(cloneElement).find('.fileInput').attr('name','answer_image['+k+']['+j+']');
                         }
                     }  
-                counter++;
+                
                 img++;
             break;
             }
@@ -500,9 +544,9 @@ $(document).on('click','.add-answer',function()
 
     else 
     {
-        counter = parent_container_child_length - 3;
-        var appendIndex = counter ;
-        var cloneElement = $('.clone_section_0').eq(0).clone();
+        var counter = $(this).parent().parent().children().length - 1;
+        var appendIndex = counter -1;
+        var cloneElement = $('.clone_section').eq(0).clone();
         $(cloneElement).removeClass('clone_section_0');
         if ($('#'+parent_container+' .quiz_section .col-sm-6').last().length != 1) {
             $('#'+parent_container+' .quiz_section .col-sm-6').last().find('.delete_img').show()
@@ -515,36 +559,37 @@ $(document).on('click','.add-answer',function()
             
             if (i == parent_container_child_length)
             {
-                 
+                $(cloneElement).find('input[type="radio"]').val(array[i]); 
                 $(cloneElement).find('label').text(array[i] + '. Enter Answer');
                 $(cloneElement).find('.second-6').find('.delete_img').show()
                 $(cloneElement).find('.second-6').find('.delete_img').css('display', 'block');
                 $(cloneElement).find('input[type="textarea"]').val('');
                 $(cloneElement).find('input[type="textarea"]').css('border','');
-                
+                $(cloneElement).find('.image_answer').attr('src','/images/imageplaceholder.png');
                 var k = $('.add-answer').index(this)
                     for( var j=0; j<=parent_container_child_length; j++){
                         if(j == parent_container_child_length){
                             $(cloneElement).find('input[type="textarea"]').attr('name','answer['+k+']['+j+']');
+                            $(cloneElement).find('.fileInput').attr('name','answer_image['+k+']['+j+']');
                             console.log(cloneElement);
                             
                        
                         }
                     } 
                    
-                    $(cloneElement).find(".second-6").appendTo("#cloning_element_" + appendIndex)
+                    $(cloneElement).find(".second-6").appendTo("#clone_index_" +appendIndex)
                 break;
             }
         }
     }  
-    $(".answer").click(function () {
+    $(document).on('click','.answer',function(){
 
         var array = genCharArray('a', 'z');
     
         if ($(cloneElement).parent().children().length % 2 == 0) {
             for (var i = 1; i < array.length; i++) 
             {
-                if (parent_container_child_length > 2) {
+                if (parent_container_child_length > 3) {
                     //console.log($(this).parent().siblings());
                     $(this).parent().parent().siblings().find('.delete_img').show();
                     $(this).parent().parent().remove();
@@ -553,20 +598,10 @@ $(document).on('click','.add-answer',function()
             }
         } else {
             for (var i = 2; i < array.length; i++) {
-                if (parent_container_child_length > 2) {
-                    //console.log($(this).parent().siblings());
+                if (parent_container_child_length > 3) {
                     $(this).parent().parent().parent().prev().last().find('.second-6').find('.delete_img').show()
                     $(this).parent().parent().parent().remove();
                     break;
-                // } else {
-                //     $(".del_1").click(function () {
-                //         $('.textarea1').css('border-color', 'red');
-                //         $('.p12').text('**A question must have atleast 2 answers.');
-                //     });
-                //     $(".del_2").click(function () {
-                //         $('.textarea2').css('border-color', 'red');
-                //         $('.p13').text('**A question must have atleast 2 answers.');
-                //     });
                 }
             }
         }
@@ -579,28 +614,36 @@ $(document).ready(function () {
     var clone_answer=1;
     var answer_counter = 1;
     var answer_counter_next = 0;
-    var question_parent_container =$('.add_question').parent().parent().prev().children().first().children().last().children().first().attr('id')
+    var array = genCharArray('a', 'z');
+    var question_parent_container =$('.add_question').parent().parent().prev().children().first().children().last().children().first().attr('id');
       console.log(question_parent_container);
+    
     $(".add_question").click(function () {
+        var answer_parent =$('.add_question').parent().parent().prev().children().first().children().last().children().last().prev().prev().attr('id');
         var addng_element = $(this).parent().parent().siblings().last().prev().prev().children().children().last().children().last().prev();
-        console.log(addng_element);
+        console.log(cloneQuestion);
         var cloneQuestion = $('.clone_section_question').clone()
         .attr('id', 'clone_answer_' + clone_answer)
         .appendTo(".challenge");
+        console.log(cloneQuestion);
         $(cloneQuestion).removeClass('clone_section_question');
         $(cloneQuestion).children().last().children().first().attr('id',question_parent_container+cloneCount)
         $(cloneQuestion).find('.add_answer').attr('id','clone_answer_'+cloneCount+'_add_answer')
-        //$('.add_question').parent().parent().prev().children().last().attr('id','clone_answer_' + cloneCount)
+        $(cloneQuestion).children().last().children().last().prev().prev().attr('id',answer_parent+cloneCount);
         for(var i=0 ; i<20; i++)
         {
             if($(".chalange_second_step").children().length == i){
+                $(cloneQuestion).find('input[type="radio"]').val(array[i]); 
                 $(cloneQuestion).find('.question_label').text(i+ '. Enter Question');
                 $(cloneQuestion).find('input[type="textarea"]').val('');
                 for( i=0; i<$(cloneQuestion).find('.question_text').children().length; i++){
                     $(cloneQuestion).find('.question_text').find('input[type="textarea"]').eq(i).first().attr('name','answer['+answer_counter +']['+i+']');
+                    $(cloneQuestion).find('.question_text').find('.fileInput').eq(i).first().attr('name','answer_image['+answer_counter +']['+i+']');
+                    $(cloneQuestion).find('.question_text').find('input[type="radio"]').attr('name','right_answer['+answer_counter +']');
+                    $(cloneQuestion).find('input[type="radio"]').eq(i).first().val(array[i]);
                 }            
                 $(cloneQuestion).find('input[type="textarea"]').css('border-color', '');
-                $(cloneQuestion).find('.image_answer').attr('src','images/imageplaceholder.png');
+                $(cloneQuestion).find('.question_text').find('.image_answer').attr('src','/images/imageplaceholder.png');
                 $(cloneQuestion).find('span').text('');
                 break;
             }
@@ -633,7 +676,7 @@ $(document).on('click','.browse',function()
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    destination.setAttribute('src' , e.target.result);
+                    destination.setAttribute('src' , e.target.result);  
                 };
 
                 reader.readAsDataURL(input.files[0]);
@@ -641,113 +684,14 @@ $(document).on('click','.browse',function()
     }
 
 
-//Profile Page Jquery
-
-$('.profile_pic_edit').click(function()
-    {
-        $('.hide_button').trigger('click')
-    });
-
-$('.hide_button').click(function()
-{
-    $(this).siblings().last().prev().find('.fileImage').trigger('click')
+$(document).ready(function() { 
+    $("#invites").select2({
+        maximumSelectionLength: 10}); 
 });
 
-$(document).on('change','.fileImage',function()
-    {
-        read(this);
-        //crop_image();
-        // var file_data = $(".fileImage").prop("files")[0];   // Getting the properties of file from file field
-        // var form_data = new FormData();                  // Creating object of FormData class
-        // form_data.append("file", file_data)              // Appending parameter named file with properties of file_field to form_data
-        // form_data.append("user_id", 123)                 // Adding extra parameters to form_data
-        // $.ajax({
-        //             url:  "http://localhost:3000/profile_image",
-        //             dataType: 'script',
-        //             cache: false,
-        //             contentType: false,
-        //             processData: false,
-        //             data: form_data,                         // Setting the data attribute of ajax with file_data
-        //             type: 'post'
-        //    })
-        //    alert( JSON.stringify(file_data));
-    });
-
-    function read(input)
-    {
-        if (input.files && input.files[0]) 
-        {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#cropper-example-2-modal')
-                .attr('src', e.target.result);
-                //crop_image(e.target.result);
-                
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-// function crop_image(input){
-//     $('#image').cropper({
-//         aspectRatio: 16 / 9,
-//         crop: function(e) {
-//           // Output the result data for cropping image.
-//           console.log(e.x);
-//           console.log(e.y);
-//           console.log(e.width);
-//           console.log(e.height);
-//           console.log(e.rotate);
-//           console.log(e.scaleX);
-//           console.log(e.scaleY);
-//         }
-//       });
-// }
 
 
-// $(document).on('click','#crop',function(){
-//     crop_image();
-//     var cropped_image = $(this).siblings().first().attr('src');
-//     $(this).parent().siblings().last().children().first().children().first().children().children().first().find('img').attr('src',cropped_image);
-   
-// })
+$(document).on('click','.remove', function(){
+    $(this).parent().find('.image_answer').attr('src','/images/imageplaceholder.png')
 
-
-    
-
-
-
-
-var $image = $('#cropper-example-2 > img'),
-    cropBoxData,
-    canvasData;
-
-$('#cropper-example-2-modal').on('shown.bs.modal', function () {
-    $('#cropper-example-2 > img').cropper({
-    autoCropArea: 0.5,
-    crop:function(data){
-        console.log(data);
-    },
-    built: function () {
-      // Strict mode: set crop box data first
-      $('#cropper-example-2 > img').cropper('setCropBoxData', cropBoxData);
-      $('#cropper-example-2 > img').cropper('setCanvasData', canvasData);
-    }
-  });
-}).on('hidden.bs.modal', function () {
-  cropBoxData =  $('#cropper-example-2 > img').cropper('getCropBoxData');
-  canvasData =  $('#cropper-example-2 > img').cropper('getCanvasData');
-  console.log('close');
-  console.log(canvasData);
-  $('#cropper-example-2 > img').cropper('destroy');
 });
-$(document).on('click',"#crops",function(){
-    cropBoxData =  $('#cropper-example-2 > img').cropper('getCropBoxData');
-    canvasData =  $('#cropper-example-2 > img').cropper('getCanvasData');
-    var test = $('#cropper-example-2 > img').cropper("getCroppedCanvas");
-    console.log('close');
-    console.log(canvasData);
-})
-    

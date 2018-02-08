@@ -1,6 +1,16 @@
 extends header
 block content
   .container
+    if messages.error
+      .alert.alert-danger.failure-alert
+        div= messages.error
+    if messages.info
+      .alert.alert-info.failure-alert
+        div= messages.info
+    if messages.success
+      .alert.alert-success.failure-alert
+        div= messages.success
+  .container
     .row
       .col-sm-offset-3.col-sm-6.col-sm-onset-3
         .signin_form
@@ -60,9 +70,10 @@ block content
                 p.login_acc_info
                   input#remember(type='checkbox', name='remember', checked=true)
                   span I Agree to the 
-                  a(href="#") TERMS OF USE 
+                  a( class='terms') TERMS OF USE 
                   span#span and 
-                  a(href="#") PRIVACY POLICY 
+                  a(class='terms') PRIVACY POLICY 
+                span#p9
               .col-sm-12.login_submit
                 div
                   //- a(href="/lobbypage") 
@@ -71,6 +82,22 @@ block content
               .col-sm-12
                 p.login_ac_info
                   | Already have an account? 
-                  a(href="/") Login
+                  a(href="/signin") Login
+            
+            .row
+              .col-sm-offset-1.col-sm-10
+                span.or-wrapper
+                  span.or-text or
+              .col-sm-12
+                p.loggin_ac_social
+                  a.btn.btn-block.btn-social.btn-lg.btn-facebook(href="/social_signup/facebook" method="get")
+                    i.fa.fa-facebook
+                    | sign up with facebook
+              .col-sm-12
+                p.loggin_ac_social
+                  a.btn.btn-block.btn-social.btn-lg.btn-google-plus(href="/social_signup/google" method="get")
+                    i.fa.fa-google-plus
+                    | sign up with google plus
+              
               .clear
   script(src="javascripts/date.js")

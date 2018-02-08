@@ -1,0 +1,63 @@
+extends header_edit
+block content
+    .container
+        .row
+            form(action="/score/"+challenges._id, method="post")
+                .col-sm-12
+                    .crt_chall_h1
+                        h1= challenges.challengeName 
+                    .crt_chall_form
+                        .manager_sec
+                            .col-sm-2
+                                label Manager: 
+                            .col-sm-10
+                                label.label_invite_challenge= challenges.manager
+                            .clear  
+                        .col-sm-2
+                            label Prize:
+                        .col-sm-4.col-sm-onset-6
+                            label.label_invite_challenge= challenges.prize
+                                
+                        .clear
+                        .chalange_second_step.challenge
+                            - var i=0
+                            - var m=0
+                            
+                            each question_text, index  in challenges.question
+                                - var j=0    
+                                .col-sm-12.col-sm-offset-11
+                                    h5 Marks #{challenges.question[i].question_mark}
+                                    input(type="hidden", name="marks" value= challenges.question[i].question_mark)
+                                    input(type="hidden", name="right_answer["+i+"]" value=challenges.question[i].right_answer)
+                                    span.p10
+                                .col-sm-12.chalange_questions
+                                    .col-invite-challenge-answer
+                                        label.question_label  #{i+1}.
+                                    .col-xs-11
+                                        label.question_label  #{question_text['question_Text']}
+                                .question_text
+                                    - var k= 0
+                                .col-sm-12.quiz_section(class= 'clone_section_'+j)
+                                    each answer_item, answer_index in question_text['quesanswerList']
+                                        .col-invite-challenge-answer
+                                            input(type='radio', name='answer['+i+']', value= val[k])
+                                               
+                                        .col-xs-11
+                                            label.label_invite_challenge #{question_text['quesanswerList'][answer_index].answerText}
+                                            span.p12
+                                            
+                                        .clear  
+                                        .col-sm-12
+                                            br
+                                            .col-xs-3
+                                                - if(question_text['quesanswerList'][answer_index].image !=null)
+                                                    input.image_answer.play_challenge(type="image", src='/images/assets/images/'+question_text['quesanswerList'][answer_index].image, alt='Please upload image' name='image_answer['+m+']['+k+']')
+                                                span.p18
+                                                - k++
+                                                - m++
+                                                - j++
+                                    - i++   
+                        .col-sm-12
+                            .div
+                                .submit_chall
+                                    input(type='submit', value='Submit' onclick='getConfirmation()')

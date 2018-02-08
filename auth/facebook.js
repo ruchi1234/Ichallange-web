@@ -5,7 +5,7 @@ var passport = require('passport')
 passport.use(new FacebookStrategy({
     clientID: "153095285412104",
     clientSecret: "a74d30fda753863249f6c0f607198298",
-    callbackURL: "http://ec2-18-218-152-243.us-east-2.compute.amazonaws.com:8080/index/facebook/callback",
+    callbackURL: "http://ec2-18-218-152-243.us-east-2.compute.amazonaws.com:8080/social_signup/facebook/callback",
     profileURL    : 'https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email',
     profileFields: ['id', 'emails', 'name']
   },
@@ -15,7 +15,7 @@ passport.use(new FacebookStrategy({
   var name=profile.name.givenName +rad;
     console.log(profile);
 //check user table for anyone with a google  ID of profile.id
-User.findOne({'userid': profile.id}, function(err, user) {
+User.findOne({'userid_social': profile.id}, function(err, user) {
     if (err) {
         return done(err);
     }
@@ -30,7 +30,7 @@ User.findOne({'userid': profile.id}, function(err, user) {
                 user = new User({
                 username: name,
                 email: profile.emails[0].value,
-                userid: profile.id,
+                userid_social: profile.id,
                 is_social:1,
                 provider: "facebook"
                 });

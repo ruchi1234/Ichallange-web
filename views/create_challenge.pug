@@ -42,7 +42,7 @@ block content
                                     p Date
                                 .col-xs-10.deadline_date
                                     input.date_cc(type='text', name="date_cc")
-                                    img.id_imgcalendar(src='images/calender.png', )
+                                    img.id_imgcalendar(src='/images/calender.png', )
                                     span.p3
                                 .clear
                             .col-sm-6.dead_time
@@ -90,9 +90,9 @@ block content
                             label Invities 
                         .col-sm-4.col-sm-onset-6
                             .custom_select
-                                select.select.invites(name="invites")
-                                    option(selected disabled value='') Invites
-                                    option(value='Contacts') contacts
+                                select.select.invites#invites(name="invites" multiple)
+                                    for contact in contacts
+                                        option(value= contact.contact_name) #{contact.contact_name}
                                 span.c8
                         .clear        
                         .col-sm-2
@@ -109,7 +109,7 @@ block content
                                         label.question_label 1. Enter Question 
                                     .col-sm-2.col-xs-6.col-sm-onset-8
                                         .custom_select
-                                            select.select.question(name="question")
+                                            select.select.question(name="question[]")
                                                 option(value='10') 10 Points
                                                 option(value='09') 09 Points
                                                 option(value='08') 08 Points
@@ -123,7 +123,7 @@ block content
                                             span.p10
                                     .clear
                                     div
-                                        input.textarea0(type='textarea', name='question_cc')
+                                        input.textarea0(type='textarea', name='question_cc[]')
                                         span.p11
                                 .question_text
                                     .col-sm-12.quiz_section.clone_section#cloning_element
@@ -133,20 +133,25 @@ block content
                                             .col-xs-6
                                                 .answer
                                                     .delete_img
-                                                        img(src='images/delete.png')
+                                                        img(src='/images/delete.png')
                                             .col-sm-12
-                                                input.textarea1(type='textarea', name='answer')
+                                                input.textarea1(type='textarea', name='answer[0][0]')
                                                 span.p12
                                             .clear  
                                             .col-sm-12
                                                 .col-xs-6
                                                     button.browse(type='button') Browse
+                                                    br
+                                                    input(type='radio', name='right_answer[0]', value='A',checked='')
+                                                    |  Correct Answer
                                                     div(style='height:0px;overflow:hidden')
-                                                        input.fileInput(type='file', name='answer_image', accept="image/*")   
+                                                        input.fileInput(type='file', name='answer_image[0][0]', accept="image/*")   
                                                 //-input.fileInput(type='file', name='fileInput')
                                                 .col-xs-6
-                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image' name='image')
+                                                    //-button.remove(type='button') Remove Image
+                                                    img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image' name='image')
                                                     span.p18
+                                                    button.remove(type='button') Remove Image
                                             .clear
                                         .col-sm-6.quiz-second-6.second-6
                                             .col-xs-6
@@ -154,18 +159,23 @@ block content
                                             .col-xs-6
                                                 .answer
                                                     .delete_img.stop_delete
-                                                        img(src='images/delete.png')
+                                                        img(src='/images/delete.png')
                                             .col-sm-12
-                                                input.textarea2(type='textarea', name='answer')
+                                                input.textarea2(type='textarea', name='answer[0][1]')
                                                 span.p13
                                             .col-sm-12
                                                 .col-xs-6
                                                     button.browse(type='button') Browse
+                                                    br
+                                                    input(type='radio', name='right_answer[0]', value='B')
+                                                    |  Correct Answer
                                                     div(style='height:0px;overflow:hidden')
-                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")  
+                                                        input.fileInput(type='file', name='answer_image[0][1]' , accept="image/*")  
                                                 .col-xs-6
-                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    //-button.remove(type='button') Remove Image
+                                                    img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
                                                     span.p19
+                                                    button.remove(type='button') Remove Image
                                             .clear
                                     .col-sm-12.quiz_section
                                         .col-sm-6.quiz-first-6.first-6
@@ -174,19 +184,24 @@ block content
                                             .col-xs-6
                                                 .answer
                                                     .delete_img
-                                                        img(src='images/delete.png')
+                                                        img(src='/images/delete.png')
                                             .col-sm-12
-                                                input.textarea3(type='textarea', name='answer')
+                                                input.textarea3(type='textarea', name='answer[0][2]')
                                                 span.p14
                                             .clear
                                             .col-sm-12
                                                 .col-xs-6
                                                     button.browse(type='button') Browse
+                                                    br
+                                                    input(type='radio', name='right_answer[0]', value='C')
+                                                    |  Correct Answer
                                                     div(style='height:0px;overflow:hidden')
-                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                                        input.fileInput(type='file', name='answer_image[0][2]' , accept="image/*")
                                                 .col-xs-6
-                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    //-button.remove(type='button') Remove Image
+                                                    img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
                                                     span.p20
+                                                    button.remove(type='button') Remove Image
                                             .clear
                                         .col-sm-6.quiz-second-6.second-6
                                             .col-xs-6
@@ -194,18 +209,23 @@ block content
                                             .col-xs-6
                                                 .answer
                                                     .delete_img
-                                                        img(src='images/delete.png')
+                                                        img(src='/images/delete.png')
                                             .col-sm-12
-                                                input.textarea4(type='textarea', name='answer')
+                                                input.textarea4(type='textarea', name='answer[0][3]')
                                                 span.p15
                                             .col-sm-12
                                                 .col-xs-6
                                                     button.browse(type='button') Browse
+                                                    br
+                                                    input(type='radio', name='right_answer[0]', value='D' )
+                                                    |  Correct Answer
                                                     div(style='height:0px;overflow:hidden')
-                                                        input.fileInput(type='file', name='answer_image' , accept="image/*")
+                                                        input.fileInput(type='file', name='answer_image[0][3]',src='' , accept="image/*")
                                                 .col-xs-6
-                                                    img.image_answer(src='images/imageplaceholder.png', alt='Please upload image')
+                                                    //-button.remove(type='button') Remove Image
+                                                    img.image_answer(src='/images/imageplaceholder.png', alt='Please upload image')
                                                     span.p21
+                                                    button.remove(type='button') Remove Image
                                             .clear
                                     .col-sm-12.add_answer#clone_answer_0_add_answer
                                             a.add-answer  Add Answer

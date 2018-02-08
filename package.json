@@ -6,6 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.18.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
@@ -13,6 +16,7 @@
     "email-templates": "^3.3.2",
     "express": "~4.15.5",
     "express-flash": "0.0.2",
+    "express-mailer": "^0.3.1",
     "express-session": "^1.15.6",
     "mongoose": "^4.13.9",
     "morgan": "~1.9.0",
@@ -23,6 +27,7 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "pug": "2.0.0-beta11",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "xoauth2": "^1.2.0"
   }
 }

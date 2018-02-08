@@ -1,7 +1,7 @@
 var flag=0;
 var uflag=0;
 var eflag=0;
-
+var efflag=0;
 $(document).ready(function () {
     $(document).on('click','#signup',function(){
    // $("#signup").click(function () 
@@ -58,26 +58,45 @@ $(document).ready(function () {
                 $('#p3').text('**Password should be minimum length of 6');
                 return false;
             }
-            else if (password.length >= 6) {
-                $('#password').css('border-color', 'green');
-                $('#p3').text('');
-                return true;
+            else if ((password.length >= 6)&&(country !='')) {
+                if(uflag==1||eflag==1)
+                {
+            //event.preventDefault();
+            return false;
+                }
+                else
+
+                if($('#remember').is(":checked"))
+                {
+                    $('#password').css('border-color', 'green');
+                    $('#p3').text('');
+                    $('#country').css('border-color', 'green');
+                    $('#p4').text('');
+                    $('#email').css('border-color', 'green');
+                    $('#p2').text('');
+                    $('#username').css('border-color', 'green');
+                    $('#p1').text('');
+                    return true;
+                }
+                else{
+                    //alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy');
+                    $('.login_acc_info').css('border-color', 'green');
+                    $('#p9').text('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy');
+                    return false;
+                }
+
             }
-            else {
-                $('#password').css('border-color', 'red');
-                $('#p3').text('**Required');
-                return false;
-            }
-            if (country !='') {
-                $('#country').css('border-color', 'green');
-                $('#p4').text('hey');
-                return true;
-            }
-            else {
-                $('#country').css('border-color', 'red');
-                $('#p4').text('**Required');
-                return false;
-            }
+            
+            // if (country !='') {
+            //     $('#country').css('border-color', 'green');
+            //     $('#p4').text('hey');
+            //     return true;
+            // }
+            // if (country =='') {
+            //     $('#country').css('border-color', 'red');
+            //     $('#p4').text('**Required');
+            //     return false;
+            // }
         }
     });
     
@@ -94,7 +113,7 @@ $(document).ready(function () {
         }
        
 
-        var $check_email =$("#edit_checkemail").val();
+        var check_email =$("#edit_checkemail").val();
         var check_username =$("#edit_checkname").val();
         var username = $("#edit_username").val();
         var email = $("#edit_email").val();
@@ -222,8 +241,77 @@ $(document).ready(function () {
         {
             return true;
         }
-
     });
+     
+    
+    //on click of change password next button
+    $(document).on('click','#reset_password',function(){
+        var password= $("#reset_confirm_password").val();
+        var newpassword = $("#reset_new_password").val();
+        
+        if (newpassword == ''||password == '' ) {
+            $('#reset_new_password').focus();
+            $('#reset_confirm_password').focus();
+            
+            $('#reset_new_password').focus();
+            
+
+            return false;
+        }
+        else{
+
+            if (newpassword.length < 6||(password != newpassword||password.length < 6)) {
+                if (newpassword.length < 6)
+                {
+                $('#reset_new_password').css('border-color', 'red');
+                $('#resetpassword2').text('**Password should be minimum length of 6');
+                }
+                if (password != newpassword||password.length < 6) {
+                    $('#reset_confirm_password').css('border-color', 'red');
+                    $('#resetpassword3').text('**Password should be minimum length of 6');
+                }    
+                return false;
+            }
+            else if (newpassword.length >= 6 && password == newpassword) 
+            {
+                
+                $('#reset_new_password').css('border-color', 'green');
+                $('#resetpassword2').text('');
+                $('#reset_confirm_password').css('border-color', 'green');
+                $('#resetpassword3').text('');
+                return true;
+            }
+        }
+    });
+
+
+    //validation for forgot_password button
+    $(document).on('click','#forgot_password',function(){
+       
+        var forgot_password_email = $("#email_forgot_password").val();
+       
+        if (forgot_password_email == '') {
+            $('#email_forgot_password').css('border-color', 'red');
+            $('#forgotpassword1').text('**Enter the Email');
+            efflag=1;
+            return false;
+        }
+        else{
+            validate_forgot_password_Email(forgot_password_email);
+        }
+        if(efflag==1)
+        {
+            //event.preventDefault();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+    
+
+    //reset the modal of change passord
     $("#button_change_password").click(function () {
         $('#email_change_old_password').css('border-color', '');
         $('#email_change_new_password').css('border-color', '');
@@ -237,15 +325,15 @@ $(document).ready(function () {
         
         $('#password1').text('');
         return true;
-     });
-
-     //for the alert box
-     $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-      $("#success-alert").slideUp(500);
-  });
-  $("#failure-alert").fadeTo(2000, 500).slideUp(500, function(){
-      $("#failure-alert").slideUp(500);
-  });
+    });
+     
+    //alert div slideup
+    $(".success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".success-alert").slideUp(500);
+        });
+        $(".failure-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".failure-alert").slideUp(500);
+    });
 
 });
     //Name validation for signup form....
@@ -551,6 +639,65 @@ $("#email_change_password").on("focusout", function () {
     }
 });
 
+
+//Password validation for new reset password form....
+$("#reset_new_password").on("focusout", function () {
+
+    var $newpassword = this.value;
+    if ($newpassword.length < 6) {
+        $('#reset_new_password').css('border-color', 'red');
+        $('#resetpassword2').text('**Password should be minimum length of 6');
+        return false;
+    }
+    else if ($newpassword.length >= 6) {
+        $('#reset_new_password').css('border-color', 'green');
+        $('#resetpassword2').text('');
+        return true;
+    }
+    else {
+        $('#reset_new_password').css('border-color', 'red');
+        $('#resetpassword2').text('**Enter the password');
+        
+        return false;
+    }
+});
+
+
+//Password validation for reset password form....
+$("#reset_confirm_password").on("focusout", function () {
+    var $password = this.value;
+    var $newpassword = $("#reset_new_password").val();
+    if ($password.length < 6) {
+        $('#reset_confirm_password').css('border-color', 'red');
+        $('#resetpassword3').text('**Password should be minimum length of 6');
+        return false;
+    }
+    else if ($password == $newpassword) {
+        $('#reset_confirm_password').css('border-color', 'green');
+        $('#resetpassword3').text('');
+        return true;
+    }
+    else {
+        $('#reset_confirm_password').css('border-color', 'red');
+        $('#resetpassword3').text('**Password is not same');
+        return false;
+    }
+});
+
+//Email validation for signup form....
+$("#email_forgot_password").on("focusout", function () {
+    var $email = this.value;
+   
+    if ($email.length != 0) {
+        validate_forgot_password_Email($email);
+    }
+    else {
+        $('#email_forgot_password').css('border-color', 'red');
+        $('#forgotpassword1').text('**Enter the Email');
+        return false;
+    }
+});
+
 //password validation function
 function validatePassword(password,check_username) {
     
@@ -606,7 +753,7 @@ function validateName(username,check_username,check_for_signup) {
             $('#edit_username').css('border-color', 'red');
             $('#edit_p1').text('**Entered name is invalid');
         }
-        
+        uflag=1;
         return false;
     }
     else {
@@ -666,11 +813,13 @@ function validateEmail(email,check_email,check_for_signup) {
         {
             $('#email').css('border-color', 'red');
             $('#p2').text('**Entered Email is Invalid');
+            eflag=1;
         }
         else
         {
             $('#edit_email').css('border-color', 'red');
             $('#edit_p2').text('**Entered Email is Invalid');
+            eflag=1;
         }
         return false;
     } else{
@@ -715,6 +864,54 @@ function validateEmail(email,check_email,check_for_signup) {
                         $('#edit_p2').text(''); 
                     }
                     eflag=0;
+                    return true;
+                }
+              }
+            });
+
+    }
+}
+//Email validation function for forgot password....
+function validate_forgot_password_Email(email) {
+    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{3,4})?$/;
+    if (!emailRegex.test(email)) {
+        
+            $('#email_forgot_password').css('border-color', 'red');
+            $('#forgotpassword1').text('**Entered Email is Invalid');
+            return false;
+    } else{
+        $.ajax(
+            {
+              url: "/check_email/forgot_password",   // url that will use
+              type: "GET",            // type of submision
+              dataType: "JSON",        // what type of data we'll get back
+              data:
+                { 
+                    
+                    email: email                 // data that will be sent
+                  
+                },
+              success: function (data) {
+                // if check_email returns a number different than 0
+                // means that there's already a user registered with that email
+                  if (data.result > 0) {
+                      if(data.result==2){
+                     $('#email_forgot_password').css('border-color', 'red');
+                      $('#forgotpassword1').text('**Email not Registered as Ichallenge user');
+                      }
+                      else if(data.result==1){
+                        $('#email_forgot_password').css('border-color', 'red');
+                      $('#forgotpassword1').text('**Email not Registered');  
+                      }
+                        efflag=1;
+                      return false;
+                }
+                else {
+                    
+                      $('#email_forgot_password').css('border-color', 'green');
+                      $('#forgotpassword1').text('');
+                    
+                    efflag=0;
                     return true;
                 }
               }
@@ -780,19 +977,19 @@ $(document).ready(function () {
             return false;
         }
         else{
-            if(email_login.length != 0) {
-                var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{3,4})?$/;
-                if (!emailRegex.test(email_login)) {
-                    $('#email_login').css('border-color', 'red');
-                    $('#l1').text('**Entered Email is Invalid');
-                    return false;
-                }
-                else {
-                    $('#email_login').css('border-color', 'green');
-                    $('#l1').text('');
-                    return true;
-                }
-            }
+            // if(email_login.length != 0) {
+            //     var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{3,4})?$/;
+            //     if (!emailRegex.test(email_login)) {
+            //         $('#email_login').css('border-color', 'red');
+            //         $('#l1').text('**Entered Email is Invalid');
+            //         return false;
+            //     }
+            //     else {
+            //         $('#email_login').css('border-color', 'green');
+            //         $('#l1').text('');
+            //         return true;
+            //     }
+            // }
             
             if (password_login.length < 6) {
                 $('#password_login').css('border-color', 'red');
@@ -813,7 +1010,25 @@ $(document).ready(function () {
     });
     
 });
-
+// for index page searching
+$(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#welcome_tbl tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+$(document).ready(function(){
+ 
+    $('a.terms').click(function(){
+        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=600,height=300,left=100,top=100`;
+      window.open('/terms_of_use','index/terms_of_use',params);
+      return false;
+    });
+   
+  });
 
 
 

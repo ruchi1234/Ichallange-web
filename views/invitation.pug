@@ -1,0 +1,17 @@
+extends header_email
+block content
+  .container(style='font-family: Arial; font-size: 12px;')      
+    .row(style='margin-left: 22%;margin-right: -10px;')
+      .col(style='margin-left: 30%; width: 50%;box-shadow: -1px 1px 9px 1px #e4e4e4;padding: 34px 37px;margin: 29px 36px 29px;background: #ffffff;')
+        div
+          p
+            b Dear 
+              b=user.name
+              b ,
+          p(style='margin-left: 3%;')
+            | You are invited by #{user.by} to play 
+          p(style='margin-left: 3%;')
+            | Follow this link to play this challenge.
+            a(href=user.url)
+              p=user.url
+  

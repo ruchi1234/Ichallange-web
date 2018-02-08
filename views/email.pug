@@ -1,0 +1,17 @@
+extends header_email
+block content
+  .container(style='font-family: Arial; font-size: 12px;')      
+    .row(style='margin-left: 22%;margin-right: -10px;')
+      .col(style='margin-left: 30%; width: 50%;		box-shadow: -1px 1px 9px 1px #e4e4e4;padding: 34px 37px;margin: 29px 36px 29px;background: #ffffff;')
+        div(style='')
+          b Dear #{user.name}, 
+               
+          p(style='margin-left: 3%;')
+            | You have requested a password reset, please follow the link below to reset your password.
+          p(style='margin-left: 3%;')
+            | Please ignore this email if you did not request a password change.
+          p(style='margin-left: 3%;')
+            | Follow this link to reset your password.
+            a(href=user.url)
+              p=user.url
+  

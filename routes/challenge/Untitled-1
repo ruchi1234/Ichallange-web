@@ -1,0 +1,59 @@
+{challangeName: "Testing ", template: "Main", category: "Contest", series: "Once", entry: "Public", …}
+
+
+var test = {
+    'Answer_0_0': "A1",
+    'Answer_0_1' : "B1",
+    'Answer_0_2' : "C1",    
+    'Answer_0_3' : "D1",
+    'Answer_1_0' : "A2",
+    'Answer_1_1' : "B2",
+    'Answer_1_2' : "C2",
+    'Answer_1_3' : "D2",
+    'Question_0' : "Question1",
+    'Question_1' : "Qestion 2 ",
+    'category : "Contest",
+    'challangeName'  : "Testing ",
+    challangePrice  : "123"
+}
+var finalData = {};
+finalData.question_cc = [];
+finalData.answer = [][];
+for (var prop in test) {
+    console.log(prop);
+    if(prop.includes('Question'))
+    {
+       let splitQuestionName =  prop.split("_");
+        finalData.question_cc[splitQuestionName[0]] = test[prop];
+        
+    }
+	if(prop.includes('Answer'))
+    {
+       let splitAnswerName =  prop.split("_");
+       finalData.answer[splitAnswerName[0]][splitAnswerName[1]] = test[prop];
+        
+    }
+}
+
+var finalData = {};
+finalData.question_cc = [];
+finalData.answer = [];
+for (var prop in test) {
+   // console.log(prop);
+    if(prop.includes('Question'))
+    {
+       let splitQuestionName =  prop.split("_");
+        console.log(test[prop]);
+        finalData.question_cc[splitQuestionName[1]] = test[prop];
+        
+    }
+	if(prop.includes('Answer'))
+    {
+        let localAnswer =[];
+        let splitAnswerName =  prop.split("_");
+        localAnswer[splitAnswerName[2]] = 
+      //localAnswer[splitAnswerName[2]] = test[prop];
+      finalData.answer[splitAnswerName[1]].push({test[prop]});
+        
+    }
+}

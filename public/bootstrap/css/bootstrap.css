@@ -1579,8 +1579,6 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 @media (min-width: 768px) {
   .container {
@@ -2253,7 +2251,7 @@ caption {
   text-align: left;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 .table {
   width: 100%;
@@ -5798,6 +5796,7 @@ button.close {
 }
 .modal-body {
   position: relative;
+  
   padding: 15px;
 }
 .modal-footer {

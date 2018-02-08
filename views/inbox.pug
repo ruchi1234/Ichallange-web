@@ -1,0 +1,46 @@
+extends header_user
+block content
+  .container
+    .row
+      .col-sm-12
+        .col-sm-6
+          .lobby_h1
+            h1  Inbox 
+        .col-sm-6
+          button#compose_inbox Compose
+  .sitecontent
+    .container
+      .row
+        .col-sm-12
+          .inbox_table
+            .form_inner
+              table
+                - var d = new Date();
+                - var year= d.getFullYear();
+                - var month = d.getMonth()+1;
+                - month = month < 10 ? '0'+month : month;
+                - var date = d.getDate();
+                - date = date < 10 ? '0'+date : date;
+                - var today = year+'-'+month+'-'+date;
+                for data in test
+                  - var flag=0;
+                  - if((player).length > 0)
+                    - for (d=0; d<(player).length;d++)
+                      - if(user_id==player[d].player_id&&data._id==player[d].challenge_id)
+                        - flag=1
+                  tr
+                    if(flag==1)
+                      td.blackinbox
+                        i.fa.fa_inbox.fa-envelope-o(aria-hidden="true")
+                        p #{data.challengeName}
+                    else if(data.Date < today)
+                      td.blackinbox
+                        i.fa.fa_inbox.fa-envelope-o(aria-hidden="true")
+                        p #{data.challengeName}
+                    else
+                      td
+                        i.fa.fa_inbox.fa-envelope-o(aria-hidden="true")
+                        a(href = '/play_challenge/'+data._id) #{data.challengeName}
+
+
+                    

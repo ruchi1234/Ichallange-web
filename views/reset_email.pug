@@ -1,0 +1,13 @@
+extends header_email
+block content
+  .container(style='font-family: Arial; font-size: 12px;')      
+    .row(style='margin-left: 22%;margin-right: -10px;')
+      .col(style='margin-left: 25%; width: 50%;box-shadow: -1px 1px 9px 1px #e4e4e4;padding: 34px 37px;margin: 29px 36px 29px;background: #ffffff;')
+        div
+          p
+            b Dear 
+              b=user.name
+              b ,
+          p(style='margin-left: 3%;')
+            |This is a confirmation that the password for your account #{user.email} has just been changed.
+

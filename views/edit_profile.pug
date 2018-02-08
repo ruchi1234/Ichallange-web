@@ -1,8 +1,16 @@
 extends header_user
 block content
   .container
-    if(messages !=null)
-      .alert.alert-warning#failure-alert #{messages}
+    if messages.error
+      .alert.alert-danger.failure-alert
+        div= messages.error
+    if messages.info
+      .alert.alert-info.failure-alert
+        div= messages.info
+    if messages.success
+      .alert.alert-success.failure-alert
+        div= messages.success
+  .container
     .row
       .col-sm-offset-3.col-sm-6.col-sm-onset-3
         .signin_form
@@ -13,9 +21,11 @@ block content
                 input(type="hidden" name="user_id" id="edit_user_id",value=test._id)
                 input(type="hidden" name="checkname" id="edit_checkname",value=test.username)
                 input(type="hidden" name="checkemail" id="edit_checkemail",value=test.email)
-                div
-                  input(type="text" name="username" id ="edit_username" placeholder="Username" , value=test.username)
-                  span#edit_p1
+              if (test.is_social == 0)
+                .col-sm-12
+                  div
+                    input(type="text" name="username" id ="edit_username" placeholder="Username" , value=test.username)
+                    span#edit_p1
               if (test.is_social == 0)
                 .col-sm-12
                   div

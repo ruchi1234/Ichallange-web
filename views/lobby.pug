@@ -1,0 +1,19 @@
+extends header_user
+block content
+  .container
+    .row
+      .col-sm-12
+        .lobby_h1
+          h1  Lobby 
+        .lobby_search
+          .col-sm-4
+            .lobby_search_inner
+              input#myInput(type="text" placeholder="Search..")
+              img(src="images/searchicon.png")
+          .col-sm-2.col-sm-onset-5
+            input(type='button', value="Create Challenge" , onclick="window.location.href='/create_challenge'")
+        .lobby_iframe
+          iframe#iframe(src='/get_lobby_data', name='iframe_a')
+              p
+                a(href='', target='iframe_a')
+  

@@ -1,26 +1,26 @@
 //For Month
     var d = new Date();
     var monthArray = new Array();
-    monthArray[1] = "January";
-    monthArray[2] = "February";
-    monthArray[3] = "March";
-    monthArray[4] = "April";
-    monthArray[5] = "May";
-    monthArray[6] = "June";
-    monthArray[7] = "July";
-    monthArray[8] = "August";
-    monthArray[9] = "September";
-    monthArray[10] = "October";
-    monthArray[11] = "November";
-    monthArray[12] = "December";
-    for (m = 1; m <= 12; m++) {
+    monthArray[0] = "January";
+    monthArray[1] = "February";
+    monthArray[2] = "March";
+    monthArray[3] = "April";
+    monthArray[4] = "May";
+    monthArray[5] = "June";
+    monthArray[6] = "July";
+    monthArray[7] = "August";
+    monthArray[8] = "September";
+    monthArray[9] = "October";
+    monthArray[10] = "November";
+    monthArray[11] = "December";
+    for (m = 0; m <= 11; m++) {
         var optn = document.createElement("OPTION");
         optn.text = monthArray[m];
-        optn.value = (m);
+        optn.value = (m + 1);
         document.getElementById('month').options.add(optn);
         }
     
-    for (y = 1960; y <= 2018; y++) {
+    for (y = 1940; y <= 2018; y++) {
         var optn = document.createElement("OPTION");
         optn.text = y;
         optn.value = y;

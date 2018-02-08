@@ -5,7 +5,7 @@ var User =  require('./../schema/users');
 passport.use(new GoogleStrategy({
     clientID: "515290351127-a9b8mcvub0fmtg0jefec575vlpcujrjt.apps.googleusercontent.com",
     clientSecret: "m0xIsB7JVAqejQfED5eU9Bih",
-    callbackURL: "http://ec2-18-218-152-243.us-east-2.compute.amazonaws.com:8080/index/google/callback",
+    callbackURL: "http://ec2-18-218-152-243.us-east-2.compute.amazonaws.com:8080/social_signup/google/callback",
     scope:"profile"
   },
   function(accessToken, refreshToken, profile, done) 
@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
     console.log(profile);
     //check user table for anyone with a google  ID of profile.id
     User.findOne({
-      'userid': profile.id
+      'userid_social': profile.id
     }, function(err, user) {
         if (err) {
             return done(err);
@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy({
                     user = new User({
                     username: name,
                     email: profile.emails[0].value,
-                    userid: profile.id,
+                    userid_social: profile.id,
                     is_social:1,
                     provider: "google"
                     });

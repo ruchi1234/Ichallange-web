@@ -437,6 +437,7 @@ textarea{ resize:none; }
 	text-transform: capitalize;
 }
 .lobby_table .chalange_col{
+	text-align: center;
     width: 180px !important;
 }
 /* .lobby_table .style_col, .lobby_table entry_col, .lobby_table .deadline_col{
@@ -1094,6 +1095,13 @@ color: #b2b2b2 !important;
     width: 124px;
     height: 125px;
 }
+
+/* .user_info_pic a img {
+	border-radius: 72px;
+    border: 3px solid #cccccc;
+    width: 124px;
+    height: 125px;
+} */
 @media screen and (min-width: 768px) and (max-width: 1200px) {
 	.ac_edit_pic a {
 		font-size: 11px !important;
@@ -1152,19 +1160,8 @@ color: #b2b2b2 !important;
 span,span.p1,span.p2,span.p3,span.p4,span.p5,span.p6,span.p7,span.p8,span.p9,span.l1,span.l2 {
 	color: red;
 }
-	button#signin, button#signup, button#confirm_password ,button#update_profile, button#forgot_password, button#change_password{
-	background-color: #e30613;
-	border: none;
-	color: #ffffff;
-	border-radius: 5px;
-	font-size: 20px;
-	font-weight: 500;
-	padding: 8px 40px;
-	text-transform: capitalize;
-	margin-top: 20px;
-	margin-bottom: 16px;
-}
-select#country, select#state, select#month, select#date, select#year{
+
+select#country, select#state, select#month, select#date, select#year ,select#edit_country, select#edit_state, select#edit_month, select#edit_date, select#edit_year{
 	padding: 11px 10px;
 	border: 1px solid #dfdfdf;
 	color: #929292 !important;
@@ -1281,16 +1278,393 @@ tbody td a{
     border-radius: 5px;
     cursor: pointer;
 }
-select#edit_country, select#edit_state, select#edit_month, select#edit_date, select#edit_year{
-	padding: 11px 10px;
+
+.challenge_name{
+	text-transform: capitalize;
+}
+
+tbody td .challengename a{
+	background-color:transparent;
+	color: #333333;
+    text-transform: capitalize;
+	cursor: pointer;
+	padding: 0px;
+}
+
+
+img {
+	max-width: 100%; /* This rule is very important, please do not ignore this! */
+  }
+  .mycontainer{
+	position: absolute;
+    top: 0;
+  }
+
+  .preview {
+	overflow: hidden;
+	width: 150px; 
+	height: 130px;
+  }
+  
+.btn-social{
+	position:relative;
+	padding-left:40px;
+	text-align:left;
+	white-space:nowrap;
+	overflow:hidden;
+	left: 41px;
+    width: 78%;
+	text-overflow:ellipsis
+}
+.btn-social :first-child
+{
+	position:absolute;
+	left:19px;
+	top:3px;
+	bottom:0;
+	width:39px;
+	line-height:34px;
+	font-size:1.2em;
+	text-align:center;
+	
+}
+.btn-social.btn-lg
+{
+	padding-left:74px
+}
+
+.btn-facebook
+{
+	color:#fff;
+	background-color:#3b5998;
+	border-color:rgba(0,0,0,0.2)
+}
+
+
+.btn-google-plus:hover,.btn-google-plus:focus,.btn-google-plus:active,.btn-google-plus.active,.open .dropdown-toggle.btn-google-plus
+{
+	color:#fff;
+	background-color:#ca3523;
+	border-color:rgba(0,0,0,0.2)
+}
+.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook
+{
+	color:#fff;
+	background-color:#30487b;
+	border-color:rgba(0,0,0,0.2)
+}
+
+
+
+
+.btn-google-plus
+{
+	color:#fff;
+	background-color:#d34337;
+	border-color:rgba(0,0,0,0.2)
+}
+
+
+
+
+
+.or-wrapper {
+    border-bottom: 5px solid rgba(238, 238, 238, 0.808);
+    padding: 10px 0;
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+.or-text {
+    position: absolute;
+    left: 46%;
+	top: 0;
+	font-size: 25px;
+	color: rgba(31, 29, 29, 0.808);
+    background: #fff;
+    padding: 4px;
+}
+.padding_top_video
+{
+	padding-left: 18%;
+	padding-top: 60px;
+	width: 25%;
+}
+.padding_top_lobby
+{
+	padding-top: 60px;
+}
+
+button#signin, button#signup, button#confirm_password ,button#update_profile, button#forgot_password, button#change_password, button#reset_password{
+	background-color: #e30613;
+	border: none;
+	color: #ffffff;
+	border-radius: 5px;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 8px 40px;
+	text-transform: capitalize;
+	margin-top: 20px;
+	margin-bottom: 16px;
+}
+
+
+.remove{
+	border: none;
+color: #ffffff;
+border-radius: 3px;
+font-size: 14px;
+font-weight: 500;
+padding: 5px 5px;
+text-transform: capitalize;
+margin-top: 64px;
+margin-bottom: -25px;
+cursor: pointer;
+}
+
+
+.private_enter{
+	background-color:#9e9e9e;
+	color: #dcdcdc;
+}
+.label_invite_challenge
+{
+	color: #575656 !important;
+	text-align: justify !important;
+	text-justify: inter-word !important;
+	font-weight: 400 !important;
+	
+}
+.col-invite-challenge-question {
+	margin-left: 2.33333333%;
+	width: 8.33333333%;
+}
+.col-invite-challenge-answer {
+	position: relative;
+	min-height: 1px;
+	padding-left: 0px;
+	padding-right: 0px;
+	float: left;
+	width: 3.33333333%;
+}
+.question_label{
+	text-align: justify !important;
+	
+	-moz-text-align-last: left !important; /* Code for Firefox */
+    text-align-last: left !important;
+}
+
+span,span.p1,span.p2,span.p3,span.p4,span.p5,span.p6,span.p7,span.p8,span.p9,span.l1,span.l2 {
+    color: red;
+}
+    button#signin, button#signup, button#confirm_password ,button#update_profile, button#forgot_password, button#change_password{
+    background-color: #e30613;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 8px 40px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+select#country, select#state, select#month, select#date, select#year ,select#edit_country, select#edit_state, select#edit_month, select#edit_date, select#edit_year{
+    padding: 11px 10px;
+    border: 1px solid #dfdfdf;
+    color: #929292 !important;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 3px;
+    border-radius: 0;
+    background-image: none;
+    color: inherit;
+    vertical-align: middle;
+    font-size: 15px;
+    margin-bottom: 0px;
+    line-height: 20px;
+    font-weight: 500;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    margin-bottom: 4px;
+     /* -webkit-appearance: none;
+-moz-appearance: none; */
+}
+.lobby_search button.create_challenge {
+   outline: none;
+   background-color: #8393ca;
+   color: #ffffff;
+   text-transform: capitalize;
+   padding: 10px 19px;
+   font-weight: 500;
+   border-radius: 5px;
+   cursor: pointer;
+   border: none;
+}
+.add_crt_chall input[type="submit"], button.create_challenge {
+    background-color: #4ebed2;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 20px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+.div{
+    text-align: center;
+}
+.upload_image{
+    background-color: #eeeeee;
+    border: none;
+    color: #898989;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 3px 10px;
+    text-transform: capitalize;
+    /* margin-top: 20px; */
+
+    margin-bottom: 0px;
+    cursor: pointer;
+    margin-left: 25px;
+    position: absolute;
+}
+
+.image_answer{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+
+input[type=file] {
+    padding: 10px;
+}
+
+.add_question{
+	background-color: #4ebed2;
+	border: none;
+	color: #ffffff;
+	border-radius: 3px;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 8px 20px;
+	text-transform: capitalize;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	cursor: pointer;
+}
+
+.hidden{
+    height: 0px;
+overflow: hidden;
+background-color: transparent;
+}
+
+
+.user_info_title p#profile_email{
+    font-size: 15px;
+    color: #919191;
+    font-weight: 500;
+    margin-bottom: 2px;
+    text-transform: lowercase;
+}
+
+tbody td a{
+    background-color: #ededee;
+    color: #949494;
+text-transform: capitalize;
+padding: 6px 19px;
+font-weight: 500;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.challenge_name{
+    text-transform: capitalize;
+}
+
+tbody td .challengename a{
+    background-color:transparent;
+    color: #333333;
+text-transform: capitalize;
+    cursor: pointer;
+    padding: 0px;
+}
+
+
+img {
+    max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+.mycontainer{
+    position: absolute;
+top: 0;
+}
+
+.preview {
+    overflow: hidden;
+    width: 150px; 
+    height: 130px;
+}
+#contacts, #add_contacts, #edit_contacts{
+    background-color: #e30613;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 8px 40px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+
+.add_contact_button ,#button_add_contact {
+    background-color: #eeeeee;
+border: none;
+color: #898989;
+    border-radius: 3px;
+    float: right;
+font-size: 13px;
+font-weight: 500;
+padding: 11px 18px;
+text-transform: capitalize;
+margin-right: 30px;
+cursor: pointer;
+}
+tbody td.email_for_contact{
+     text-transform: lowercase !important;
+}
+
+td a.edit_contact , td a.delete_contact{
+background-color: transparent !important;
+    cursor: pointer;
+    padding: 0px 0px !important;
+    height: 20px;
+	width: 20px;
+}
+td a img.edit_contact, td a img.delete_con
+{
+    height: 20px;
+width: 20px;
+}
+
+#invites{
+    padding: 5px 0px !important;
 	border: 1px solid #dfdfdf;
-	color: #929292 !important;
 	width: 100%;
 	height: 100%;
 	-webkit-border-radius: 3px;
-	border-radius: 0;
+	border-radius: 5px;
 	background-image: none;
-	color: inherit;
+	color: #929292 !important;
 	vertical-align: middle;
 	font-size: 15px;
 	margin-bottom: 0px;
@@ -1301,6 +1675,286 @@ select#edit_country, select#edit_state, select#edit_month, select#edit_date, sel
 	-o-transition: all 0.25s ease-out;
 	transition: all 0.25s ease-out;
 	margin-bottom: 4px;
-	 /* -webkit-appearance: none;
-   -moz-appearance: none; */
 }
+
+
+#button_edit_contact{
+    background-color: transparent;
+	border: none;
+	color: #898989;
+	border-radius: 3px;
+	float: right;
+	font-size: 13px;
+	font-weight: 500;
+	padding: 0px 0px !important;
+	text-transform: capitalize;
+	/* margin-right: 30px; */
+		cursor: pointer;
+}
+    
+
+.remove{
+	border: none;
+	color: #ffffff;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 5px 5px;
+	text-transform: capitalize;
+	margin-top: 64px;
+	margin-bottom: -25px;
+	cursor: pointer;
+}
+
+
+.private_enter{
+	background-color:#9e9e9e;
+	color: #dcdcdc;
+}
+
+
+.submit_chall input[type="submit"]{
+    background-color: #4ebed2;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 20px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+button#compose_inbox
+{
+	float: right;
+    background-color: #e30613;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 4px 30px;
+    text-transform: capitalize;
+    margin-top: 50px;
+    margin-bottom: 16px;
+}
+
+.inbox_table 
+{
+	padding-top: 50px;
+	padding-bottom: 200px;
+}
+
+.inbox_table table tbody tr,.inbox_table table tbody td, .inbox_table table tbody th,.inbox_table table 
+{
+	width: 100%;
+	border: 1px solid rgba(95, 93, 93, 0.973);
+	padding: 15px 14px;
+	font-size: 17px;
+	font-weight: 380;
+}
+.fa_inbox{
+
+	font-size: 22px !important;
+	
+    width: 34px;
+    color: red;
+    
+}
+.inbox_table table tbody tr td p
+{
+	margin-left: 39px;
+    margin-top: -25px;
+    margin-bottom: -1px;
+}
+
+
+
+.play_challenge{
+    width: 100px !important;
+height: 100px !important;
+margin-left: 30px !important;
+    margin-bottom: 20px !important;
+    float: left !important;
+}
+.inbox_table table tbody td a
+{
+	background-color: #fff;
+}
+
+.publish{
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+	background-color: #7ACBBA;
+	color: #ffffff;
+	text-transform: capitalize;
+	padding: 5px 18px;
+	font-weight: 500;
+	border-radius: 5px;
+	font-size: 15px;
+	margin-right: 3px;
+	cursor: pointer;
+	border: none;
+}
+.delete_profile_challenge {
+    font-size: 25px !important;
+    color: red; 
+}
+
+.profile_delete a{
+    background-color: transparent;
+}
+.yes{
+    webkit-appearance: none;
+-moz-appearance: none;
+outline: none;
+background-color: #655757;
+color: #dccfcf;
+text-transform: capitalize;
+padding: 5px 18px;
+font-weight: 500;
+border-radius: 5px;
+font-size: 15px;
+margin-right: 3px;
+cursor: pointer;
+border: none;
+}
+
+.yes_delete{
+    font-size: 25px !important;
+    color: #a19595; 
+}
+
+tr .blackinbox
+{
+	background-color: rgb(214, 206, 206);
+}
+tr .blackinbox p{
+	margin-left: 51px!important;
+}
+.heading_h1 h1 {
+    padding: 0px;
+    margin-top: 48px;
+    color: #676767;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+.footer_information
+{
+	text-align: justify !important;
+	margin-bottom: 200px;
+}
+
+
+.username h5 {
+    max-width: 10ch;
+    word-break: break-word;
+    width: 140px;
+}
+
+.challenge_name label {
+    
+	margin-top: 35px;
+    color: #676767;
+    font-size: 17px;
+    font-weight: 700;
+    
+}
+
+.challenge_sec label{
+	color: #797575;
+	font-size: 15px;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
+.challenge_sec p{
+	color: #918f8f;
+	font-size: 15px;
+    
+}
+.challenge_header
+{
+	margin-bottom: 35px;
+}
+.username h5 {
+    max-width: 10ch;
+    word-break: break-word;
+    width: 140px;
+}
+.lobby_iframe iframe{
+    width: 100%;
+    height: 421px;
+    border-style: none;
+    scroll-behavior: unset;
+}
+
+/*.login_acc_info {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ Hide the browser's default checkbox */
+/* .login_acc_info  input {
+    position: absolute;
+    opacity: 0;
+	cursor: pointer;
+	top: 9px;
+    left: 4px;
+}
+
+/* Create a custom checkbox 
+.checkmark {
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    height: 18px;
+    width: 18px;
+	background-color: #eee;
+}
+/* On mouse-over, add a grey background color 
+.login_acc_info:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background 
+.login_acc_info input:checked ~ .checkmark {
+    background-color:rgb(244, 246, 247) ;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) 
+.checkmark:after {
+    content: "";
+    position: absolute;
+	display: none;
+	
+}
+
+/* Show the checkmark when checked 
+.login_acc_info input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator 
+.login_acc_info .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 5px;
+    height: 12px;
+    border: solid black;
+    border-width: 0px 2px 2px 0px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+} */

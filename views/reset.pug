@@ -1,0 +1,22 @@
+extends header
+block content
+  .container
+    .row
+      .col-sm-offset-3.col-sm-6.col-sm-onset-3
+        .signin_form
+          form(method='POST')
+            h1  Reset Password
+            .login_form
+              .col-sm-12
+                .form-group
+                  input#reset_new_password.form-control(type='password', name='password', value='', placeholder='New password', autofocus=true)
+                  span#resetpassword2
+              .col-sm-12
+                .form-group
+                  input.form-control(type='password', name='confirm',id='reset_confirm_password', value='', placeholder='Confirm password')
+                  span#resetpassword3
+              .col-sm-12
+                .form-group
+                  .col-sm-12.login_submit
+                    button#reset_password Reset Password
+            .clear

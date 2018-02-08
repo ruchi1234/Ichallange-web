@@ -1,0 +1,51 @@
+extends header_user
+block content
+  .container
+    .row
+        .col-sm-12
+            .lobby_h1 
+                h1 Challenge
+        .col-sm-12
+            .challenge_name
+                label=test[0].challengeName
+        .col-sm-12
+            .challenge_sec
+                .col-sm-1
+                    label Manager: 
+                .col-sm-4
+                    div
+                        p= test[0].manager
+                .clear 
+        .col-sm-12
+            .challenge_sec
+                .challenge_header
+                    .col-sm-1
+                        label Prize:
+                    .col-sm-4
+                        div
+                            p= test[0].prize
+                    .clear  
+  .sitecontent
+    .container
+      .row
+        .col-sm-12
+          .lobby_table
+            .form_inner
+              #followup_tbl_wrapper.dataTables_wrapper.no-footer
+                table#welcome_tbl.display.responsive.nowrap.dataTable.no-footer.dtr-inline(cellspacing="0" width="100%" role="grid" style="width: 100%;")
+                    thead.table_heading
+                        tr(role="row")
+                        th.sorting_disabled.tbl-head.chalange_col Ranking
+                        th.sorting_disabled.tbl-head.style_col Player
+                        th.sorting_disabled.tbl-head.entry_col Score
+                    tbody
+                        -var j=1
+                            -for(var i=0, k=1;i<player.length;i++,k++)
+                                tr(role="row")
+                                    td  
+                                        p=j
+                                    td= player[i].player_name
+                                    td= player[i].total_marks+'/'+player[i].max_marks
+                                    if(k<player.length)
+                                        -if(player[i].total_marks>player[k].total_marks)
+                                            -j++
